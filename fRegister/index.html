@@ -27,7 +27,7 @@
 
     </div>
 
-<!----------------------------------- Перше модальне вікно--------------------------------------->
+<!-- Перше модальне вікно -->
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
@@ -93,81 +93,96 @@
     </div>
 
 
-<!----------------------------------- Друге модальне вікно--------------------------------------->
+<!-- Друге модальне вікно -->
 
 <div id="modalOverlay2" class="modal-overlay">
     <div class="modal">
-        <h2>Замовлення № <span id="orderNumber"></span></h2>
-        <label>Дата замовлення:</label>
-        <div class="custom-preview">
-            <input type="date" id="dateConfirm" disabled>
+        <div class="hor-container" id="ConfirmHeader">
+            <h2>Замовлення №</h2>
+            <h3 id="OrderId">DEV00000000</h3>
         </div>
         
-        <label>Продукт:</label>
-        <div class="custom-preview">
-            <input type="text" id="productConfirm" disabled>
-        </div>
+        <div class="hor-block">            
+            <label>Дата замовлення:</label>
+            <div class="custom-preview">
+                <input type="date" id="dateConfirm" disabled>
+            </div>
+        </div>        
         
-        <label>Потрібна кількість:</label>
-        <div class="custom-preview">
-            <input type="number" id="quantityConfirm" disabled>
-        </div>
+        <div class="hor-block">
+            <label>Продукт:</label>
+            <div class="custom-preview">
+                <input type="text" id="productConfirm" disabled>
+            </div>
+        </div>        
         
-        <label>Обрана специфікація:</label>
-        <div class="custom-preview">
-            <input type="text" id="factoryConfirm" disabled>
-        </div>
+        <div class="hor-block">
+            <label>Потрібна кількість:</label>
+            <div class="custom-preview">
+                <input type="number" id="quantityConfirm" disabled>
+            </div>
+        </div>        
+        
+        <div class="hor-block">
+            <label>Обрана специфікація:</label>
+            <div class="custom-preview">
+                <input type="text" id="factoryConfirm" disabled>
+            </div>
+        </div>        
 
-        <label>Статус виконання:</label>
-        <div class="custom-preview">
-            <select id="status" disabled>
-                <option>В очікуванні</option>
-                <option>Виконується</option>
-                <option>Завершено</option>
-            </select>
-        </div>
+        <div class="hor-block" id="status-container">
+            <label>Статус виконання:</label>
+            <div class="custom-preview">
+                <select id="status">
+                    <option>В очікуванні</option>
+                    <option>Виконується</option>
+                    <option>Завершено</option>
+                </select>
+            </div>
+        </div>        
         
-        <label>Доданий коментар:</label>
-        <div class="custom-preview">
+        <div class="hor-block">
+            <label>Доданий коментар:</label>
             <textarea id="commentConfirm" disabled></textarea>
         </div>
         
-
-        <h3>Список матеріалів</h3>
-        <div class="custom-preview">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Матеріал</th>
-                        <th>Потрібно</th>
-                        <th>Наявно</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>M1</td>
-                        <td>10</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>M2</td>
-                        <td>8</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>M3</td>
-                        <td>3</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>M4</td>
-                        <td>9</td>
-                        <td>5</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="hor-block">
+            <h3>Список матеріалів</h3>
+            <div class="custom-preview">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Матеріал</th>
+                            <th>Потрібно</th>
+                            <th>Наявно</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>M1</td>
+                            <td>10</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>M2</td>
+                            <td>8</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td>M3</td>
+                            <td>3</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>M4</td>
+                            <td>9</td>
+                            <td>5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        
+                
         <div class="modal-nav-btns">
             <button class="edit-btn" onclick="btnEditOrder()">Змінити</button>
             <button onclick="btnCloseModalConfirm()">Підтвердити</button>

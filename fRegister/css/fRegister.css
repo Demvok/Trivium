@@ -5,11 +5,35 @@
 }
 
 textarea #comment {
-    resize: none; 
-    height: 120px;
+    height: 60px;
+}
+
+#commentConfirm {
+    height: 40px;
 }
 
 #modalOverlay2 .modal {
     max-height: 80vh; /* Встановлення максимальної висоти модального вікна */
     overflow-y: auto; /* Додає вертикальну прокрутку при необхідності */
+}
+
+#status-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    min-height: 40px;
+    margin: 10px 0;
+}
+
+#status-container label {
+    margin-top: 0px;
+    margin-right: 10%;
+}
+
+#ConfirmHeader  h2{
+    margin: 0;
+}
+
+#OrderId {
+    margin-top: 10px;
 }

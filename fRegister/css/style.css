@@ -159,6 +159,7 @@ button:hover {
 }
 
 textarea {
+    resize: none;
     height: 60px;
     width: 100%;
     padding: 10px;

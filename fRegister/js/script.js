@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 }); // Закрити форму при старті сторінки
 
 function btnOpenDialog() {
+    // return openModalConfirm()
     return openModalRegister()
 } // Заглушка для кращого інтерпретування коду
 
@@ -82,7 +83,7 @@ function submitOrder() {
         return;
     }
 
-    document.getElementById("orderNumber").textContent = generateOrderNumber();
+    document.getElementById("OrderId").textContent = generateOrderNumber();
     document.getElementById("dateConfirm").value = date;
     document.getElementById("productConfirm").value = product;
     document.getElementById("quantityConfirm").value = quantity;
@@ -95,6 +96,7 @@ function submitOrder() {
 
 function openModalConfirm() {
     document.getElementById("modalOverlay2").style.display = "flex";
+    autoResize();
 }
 
 function closeModalConfirm() {
@@ -102,7 +104,11 @@ function closeModalConfirm() {
 }
 
 function autoResize() {
-    const ta = document.getElementById("comment")
+    var ta = document.getElementById("comment")
+    ta.style.height = 'auto'; // Скидає висоту
+    ta.style.height = ta.scrollHeight >= 40 ? ta.scrollHeight + 'px' : "40px"; // Встановлює висоту відповідно до вмісту
+    
+    ta = document.getElementById("commentConfirm")
     ta.style.height = 'auto'; // Скидає висоту
     ta.style.height = ta.scrollHeight >= 40 ? ta.scrollHeight + 'px' : "40px"; // Встановлює висоту відповідно до вмісту
 }
