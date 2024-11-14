@@ -104,7 +104,7 @@ function closeModalConfirm() {
 function autoResize() {
     const ta = document.getElementById("comment")
     ta.style.height = 'auto'; // Скидає висоту
-    ta.style.height = ta.scrollHeight + 'px'; // Встановлює висоту відповідно до вмісту
+    ta.style.height = ta.scrollHeight >= 40 ? ta.scrollHeight + 'px' : "40px"; // Встановлює висоту відповідно до вмісту
 }
 
 //
