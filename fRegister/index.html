@@ -3,66 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Реєстрація Замовлення</title>
+    <title>Реєстрація замовлення</title>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fRegister.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <button class="open-modal-btn" onclick="openModal()">Відкрити реєстрацію замовлення</button>
+    <div name="center-block">
 
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Trivium Packaging">
+        </div>
+
+        <div name="button-container">
+            <button class="open-modal-btn" onclick="btnOpenDialog()">Відкрити реєстрацію замовлення</button>
+        </div>
+
+    </div>
 
 <!----------------------------------- Перше модальне вікно--------------------------------------->
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <div class="modal-content">
-                <img src="img/image 1.svg" alt="Trivium Packaging" class="logo">
-                <h2>Реєстрація Замовлення</h2>
+                <div class="logo-container"><img src="img/logo.svg" alt="Trivium Packaging"></div>
+                <div class="hor-block"><h2>Реєстрація замовлення</h2></div>
                 
-                <label for="product">Вибрати продукт</label>
-                <div class="custom-select">
-                    <input type="text" id="product" placeholder="Введіть ключове значення" oninput="filterOptions('productOptions', this.value)">
-                    <div class="options-list" id="productOptions">
-                        <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
-                        <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
-                        <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
-                        <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
-                        <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
+                <div class="hor-block">
+                    <label for="product">Вибрати продукт <span class="required">*</span></label>
+                    <div class="custom-select">
+                        <input type="text" id="product" placeholder="Введіть ключове значення" oninput="filterOptions('productOptions', this.value)">
+                        <div class="options-list" id="productOptions">
+                            <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
+                            <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
+                            <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
+                            <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
+                            <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
+                        </div>
+                    </div>
+                </div>                 
+
+                <div class="hor-block">
+                    <label for="quantity">Введіть потрібну кількість <span class="required">*</span></label>
+                    <div class="custom-select">
+                        <input type="number" id="quantity" placeholder="Введіть кількість">
                     </div>
                 </div>
                 
                 
-
-
-                <label for="quantity">Введіть потрібну кількість</label>
-                <div class="custom-select">
-                    <input type="number" id="quantity" placeholder="Введіть кількість">
-                </div>
-                
-                
-                <label for="factory">Вибрати кінцевий завод</label>
-                <div class="custom-select">
-                    <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterOptions('factoryOptions', this.value)">
-                    <div class="options-list" id="factoryOptions">
-                        <div onclick="selectOption('factory', 'Завод 1')">Завод 1</div>
-                        <div onclick="selectOption('factory', 'Завод 2')">Завод 2</div>
-                        <div onclick="selectOption('factory', 'Завод 3')">Завод 3</div>
-                        <div onclick="selectOption('factory', 'Завод 32')">Завод 32</div>
-                        <div onclick="selectOption('factory', 'Завод 33')">Завод 33</div>
+                <div class="hor-block">
+                    <label for="factory">Вибрати кінцевий завод <span class="required">*</span></label>
+                    <div class="custom-select">
+                        <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterOptions('factoryOptions', this.value)">
+                        <div class="options-list" id="factoryOptions">
+                            <div onclick="selectOption('factory', 'Завод 1')">Завод 1</div>
+                            <div onclick="selectOption('factory', 'Завод 2')">Завод 2</div>
+                            <div onclick="selectOption('factory', 'Завод 3')">Завод 3</div>
+                            <div onclick="selectOption('factory', 'Завод 32')">Завод 32</div>
+                            <div onclick="selectOption('factory', 'Завод 33')">Завод 33</div>
+                        </div>
                     </div>
                 </div>
                 
-                <label for="date">Дата замовлення:</label>
-                <div class="custom-select">
-                    <input type="date" id="date" value="2024-11-13">
-                </div>
+                <div class="hor-block">
+                    <label for="date">Дата замовлення: <span class="required">*</span></label>
+                    <div class="custom-select">
+                        <input type="date" id="date" value="2024-11-13">
+                    </div>
+                </div>               
                 
-                
-                <label for="comment">Додати коментар</label>
-                <textarea id="comment" placeholder="Додати коментар"></textarea>
+                <div class="hor-block">
+                    <label for="comment">Додати коментар</label>
+                    <textarea id="comment" placeholder="Додати коментар"></textarea>
+                </div>                
                 
                 <div class="modal-nav-btns">
-                    <button class="confirm-btn" onclick="submitOrder()">Створити замовлення</button>
-                    <button class="close-btn" onclick="closeModal()">Закрити</button>
+                    <button class="close-btn" onclick="btnCloseModalRegister()">Закрити</button>
+                    <button onclick="btnSubmitOrder()">Створити</button>                    
                 </div>
                 
             </div>
@@ -146,8 +169,8 @@
         </div>
         
         <div class="modal-nav-btns">
-            <button class="edit-btn" onclick="editOrder()">Змінити</button>
-            <button class="confirm-btn" onclick="closeModal2()">Підтвердити</button>
+            <button class="edit-btn" onclick="btnEditOrder()">Змінити</button>
+            <button onclick="btnCloseModalConfirm()">Підтвердити</button>
         </div>
     </div>
 </div>
@@ -155,6 +178,6 @@
 
 
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

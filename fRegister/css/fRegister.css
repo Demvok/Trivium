@@ -1,0 +1,15 @@
+.hor-block h2 {
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+textarea #comment {
+    resize: none; 
+    height: 60px;
+}
+
+#modalOverlay2 .modal {
+    max-height: 80vh; /* Встановлення максимальної висоти модального вікна */
+    overflow-y: auto; /* Додає вертикальну прокрутку при необхідності */
+}
