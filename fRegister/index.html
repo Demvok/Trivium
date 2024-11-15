@@ -38,14 +38,18 @@
                 <div class="hor-block">
                     <label for="product">Вибрати продукт <span class="required">*</span></label>
                     <div class="custom-select">
-                        <input type="text" id="product" placeholder="Введіть ключове значення" oninput="filterOptions('productOptions', this.value)">
+                        <div class="dropdown">
+                            <input  class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" oninput="filterOptions('productOptions', this.value)">
+                            <img src="img/Polygon 1.svg" class="dropdown-btn"></img>
+                        </div>
+                        
                         <div class="options-list" id="productOptions">
                             <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
                             <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
                             <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
                             <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
                             <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
-                        </div>
+                        </div>        
                     </div>
                 </div>                 
 
@@ -60,7 +64,10 @@
                 <div class="hor-block">
                     <label for="factory">Вибрати кінцевий завод <span class="required">*</span></label>
                     <div class="custom-select">
-                        <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterOptions('factoryOptions', this.value)">
+                        <div class="dropdown">
+                            <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterOptions('factoryOptions', this.value)">
+                            <img src="img/Polygon 1.svg" class="dropdown-btn"></img>
+                        </div>
                         <div class="options-list" id="factoryOptions">
                             <div onclick="selectOption('factory', 'Завод 1')">Завод 1</div>
                             <div onclick="selectOption('factory', 'Завод 2')">Завод 2</div>
@@ -97,7 +104,7 @@
 
 <div id="modalOverlay2" class="modal-overlay">
     <div class="modal">
-        <div class="hor-container" id="ConfirmHeader">
+        <div class="hor-block" id="ConfirmHeader">
             <h2>Замовлення №</h2>
             <h3 id="OrderId">DEV00000000</h3>
         </div>
