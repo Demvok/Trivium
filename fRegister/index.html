@@ -37,10 +37,9 @@
                 
                 <div class="hor-block">
                     <label for="product">Вибрати продукт <span class="required">*</span></label>
-                    <div class="custom-select">
+                    <div class="custom-select select-product">
                         <div class="dropdown">
-                            <input  class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" oninput="filterOptions('productOptions', this.value)">
-                            <img src="img/Polygon 1.svg" class="dropdown-btn"></img>
+                            <input  class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" onclick="filterOptions('productOptions', this.value)" oninput="filterOptions('productOptions', this.value)">
                         </div>
                         
                         <div class="options-list" id="productOptions">
@@ -63,9 +62,8 @@
                 
                 <div class="hor-block">                    
                     <label for="factory">Вибрати кінцевий завод <span class="required">*</span></label>
-                    <div class="custom-select">
-                        <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterFactories('factoryOptions', this.value)">
-                        <img src="img/Polygon 1.svg" class="dropdown-btn"></img>
+                    <div class="custom-select select-factory">
+                        <input type="text" id="factory" placeholder="Введіть ключове значення" onclick="filterFactories()" oninput="filterFactories()">
                         <div class="options-list" id="factoryOptions">
                             <!-- Варіанти будуть додаватися тут динамічно -->
                         </div>

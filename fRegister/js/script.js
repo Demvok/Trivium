@@ -1,4 +1,8 @@
 let factories = [];
+let id = 0;
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     closeModalRegister();
@@ -25,22 +29,25 @@ document.addEventListener("DOMContentLoaded", () => {
             // Парсинг CSV                                    
             const lines = data.trim().split('\n');
             lines.slice(1).forEach(line => {                
-                const [factoryCode, factoryName] = line.split(',');    
+                const [factoryCode, factoryName] = line.trim().split(',');    
                 factories.push({ name: factoryName, code: factoryCode });
+
 
                 // Додавання кожного заводу до списку
                 const option = document.createElement('div');
                 option.textContent = factoryName;
-                option.addEventListener('click', () => {   
-                        //    
-                    console.log(factoryName);                            
+                option.onclick = () => {                         
                     factoryInput.value = factoryName;
-                    alert(`Вибрано завод: ${factoryName}, Код: ${factoryCode}`);
-                }); 
+                    factoryOptions.style.display = 'none'
+                    
+                }
                 factoryOptions.appendChild(option);
+
             });
         });
+        
     
+
 }); // Закрити форму при старті сторінки
 
 function btnOpenDialog() {
@@ -67,8 +74,10 @@ function btnCloseModalConfirm() {
 // 
 
 // Функція фільтрації варіантів
-function filterFactories(listId, query) {
+function filterFactories() {
+    const query = document.getElementById('factory').value
     const options = factoryOptions.querySelectorAll(`div`);
+    factoryOptions.style.display = 'block';
     options.forEach(option => {
         const optionText = option.textContent.toLowerCase();
         if (optionText.includes(query.toLowerCase())) {
@@ -78,6 +87,7 @@ function filterFactories(listId, query) {
         }
     });
 }
+
 
 
 
@@ -106,6 +116,7 @@ function openModalRegister() {
 
 function closeModalRegister() {
     document.getElementById("modalOverlay").style.display = "none";
+    id--;
 } // Закриває форму
 
 function submitOrder() {
@@ -120,7 +131,7 @@ function submitOrder() {
         return;
     }
 
-    document.getElementById("OrderId").textContent = generateOrderNumber(factory);
+    document.getElementById("OrderId").textContent = generateOrderNumber(factory, date, product);
     document.getElementById("dateConfirm").value = date;
     document.getElementById("productConfirm").value = product;
     document.getElementById("quantityConfirm").value = quantity;
@@ -176,28 +187,30 @@ document.addEventListener("click", function (event) {
     const productOptions = document.getElementById("productOptions");
     const factoryOptions = document.getElementById("factoryOptions");
 
-    if (!event.target.closest(".custom-select")) {
-        productOptions.style.display = "none";
+    if (!event.target.closest(".custom-select.select-factory")) {
         factoryOptions.style.display = "none";
+    }
+    if (!event.target.closest(".custom-select.select-product")) {
+        productOptions.style.display = "none";
     }
 });
 
 document.getElementById('factory').addEventListener('input', () => {
     document.getElementById('factoryOptions').style.display = "block";
 })
-document.getElementById('factory').addEventListener('blur', () => {
-    document.getElementById('factoryOptions').style.display = "none";
-})
+
 
 //
 // Допоміжні функції
 
-function generateOrderNumber(_factoryName) {
+function generateOrderNumber(_factoryName, date, product) {
     console.log(_factoryName);
     factoryCode = factories.find(item => item.name == _factoryName);
     console.log(factoryCode);
     
-    return "BIL" + Math.floor(Math.random() * 1000000000)
+    id++;
+
+    return _factoryName.slice(0, 3).toUpperCase() + date.split("-")[0].slice(-2) + product.split(" ").at(-1) + id
 } ///
 
 function getTodayDate() {

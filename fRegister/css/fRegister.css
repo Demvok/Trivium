@@ -38,7 +38,7 @@ textarea #comment {
     margin-top: 10px;
 }
 
- /* Стилізація кнопки */
+ /* Стилізація кнопки
  .dropdown-btn {
     position: absolute;
     right: 10px;
@@ -46,18 +46,21 @@ textarea #comment {
     cursor: pointer;
     color: black;
     width: 17px;
+    transition: all 0.5s;
+    
+    
 }
 
 .dropdown-btn:hover{
     width: 18px;
     transition: all 0.5s;
-    transform: rotate(180deg);
+    /* transform: rotate(180deg); 
     
 }
 
 .dropdown-btn.active{
     transform: rotate(180deg);
-}
+} */
 
 .dropdown input{
     position: relative;
