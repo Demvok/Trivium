@@ -37,3 +37,29 @@ textarea #comment {
 #OrderId {
     margin-top: 10px;
 }
+
+ /* Стилізація кнопки */
+ .dropdown-btn {
+    position: absolute;
+    right: 10px;
+    top: 45%;
+    cursor: pointer;
+    color: black;
+    width: 17px;
+}
+
+.dropdown-btn:hover{
+    width: 18px;
+    transition: all 0.5s;
+    transform: rotate(180deg);
+    
+}
+
+.dropdown-btn.active{
+    transform: rotate(180deg);
+}
+
+.dropdown input{
+    position: relative;
+    padding-right: 10% !important;
+}

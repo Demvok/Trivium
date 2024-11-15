@@ -27,6 +27,12 @@ body {
     margin: 0;
 }
 
+textarea{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
 .open-modal-btn {
     padding: 10px 20px;
     font-size: 16px;
@@ -129,15 +135,6 @@ button:hover {
     position: relative;
 }
 
-.custom-select input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 .options-list {
     position: absolute;
     width: 100%;
@@ -171,11 +168,19 @@ textarea {
 
 /* Перегляд обраних опцій у полі */
 
-.custom-preview input {
+.hor-block input{
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     font-size: 14px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 4px;
+    max-width: 100%;
 }
+
+
+.hor-block input:disabled{
+    background-color: transparent;
+}
+
+
