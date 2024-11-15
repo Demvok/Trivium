@@ -1,3 +1,5 @@
+let factories = [];
+
 document.addEventListener("DOMContentLoaded", () => {
     closeModalRegister();
     closeModalConfirm();
@@ -13,26 +15,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }); // редагування розміру коментаря
 
-    // const factoryInput = document.getElementById('factory');
+    const factoryInput = document.getElementById('factory');
     const factoryOptions = document.getElementById('factoryOptions');
-    let factories = [];
 
     // Функція для завантаження CSV файлу (наприклад, 'factories.csv')
     fetch('./data/factories.csv')
         .then(response => response.text())
         .then(data => {
-            // Парсинг CSV            
+            // Парсинг CSV                                    
             const lines = data.trim().split('\n');
             lines.slice(1).forEach(line => {                
-                const [factoryCode, factoryName] = line.split(',');
+                const [factoryCode, factoryName] = line.split(',');    
                 factories.push({ name: factoryName, code: factoryCode });
 
                 // Додавання кожного заводу до списку
                 const option = document.createElement('div');
                 option.textContent = factoryName;
-                option.onclick = function() {
-                    selectFactory(factoryName, factoryCode);
-                };
+                option.addEventListener('click', () => {   
+                        //    
+                    console.log(factoryName);                            
+                    factoryInput.value = factoryName;
+                    alert(`Вибрано завод: ${factoryName}, Код: ${factoryCode}`);
+                }); 
                 factoryOptions.appendChild(option);
             });
         });
@@ -75,11 +79,6 @@ function filterFactories(listId, query) {
     });
 }
 
-// Функція для вибору варіанту
-function selectFactory(factoryName, factoryCode) {
-    factoryInput.value = factoryName;
-    alert(`Вибрано завод: ${factoryName}, Код: ${factoryCode}`);
-}
 
 
 // 
@@ -121,7 +120,7 @@ function submitOrder() {
         return;
     }
 
-    document.getElementById("OrderId").textContent = generateOrderNumber();
+    document.getElementById("OrderId").textContent = generateOrderNumber(factory);
     document.getElementById("dateConfirm").value = date;
     document.getElementById("productConfirm").value = product;
     document.getElementById("quantityConfirm").value = quantity;
@@ -193,7 +192,11 @@ document.getElementById('factory').addEventListener('blur', () => {
 //
 // Допоміжні функції
 
-function generateOrderNumber() {
+function generateOrderNumber(_factoryName) {
+    console.log(_factoryName);
+    factoryCode = factories.find(item => item.name == _factoryName);
+    console.log(factoryCode);
+    
     return "BIL" + Math.floor(Math.random() * 1000000000)
 } ///
 
