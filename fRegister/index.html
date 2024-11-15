@@ -61,22 +61,20 @@
                 </div>
                 
                 
-                <div class="hor-block">
+                <div class="hor-block">                    
                     <label for="factory">Вибрати кінцевий завод <span class="required">*</span></label>
                     <div class="custom-select">
+                        <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterFactories('factoryOptions', this.value)">
                         <div class="dropdown">
                             <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterOptions('factoryOptions', this.value)">
                             <img src="img/Polygon 1.svg" class="dropdown-btn"></img>
                         </div>
                         <div class="options-list" id="factoryOptions">
-                            <div onclick="selectOption('factory', 'Завод 1')">Завод 1</div>
-                            <div onclick="selectOption('factory', 'Завод 2')">Завод 2</div>
-                            <div onclick="selectOption('factory', 'Завод 3')">Завод 3</div>
-                            <div onclick="selectOption('factory', 'Завод 32')">Завод 32</div>
-                            <div onclick="selectOption('factory', 'Завод 33')">Завод 33</div>
+                            <!-- Варіанти будуть додаватися тут динамічно -->
                         </div>
                     </div>
                 </div>
+                
                 
                 <div class="hor-block">
                     <label for="date">Дата замовлення: <span class="required">*</span></label>

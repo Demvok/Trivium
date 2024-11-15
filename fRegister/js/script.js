@@ -1,13 +1,10 @@
-// 
-// Ініціалізація
-// 
+let factories = [];
 
 document.addEventListener("DOMContentLoaded", () => {
     closeModalRegister();
     closeModalConfirm();
     
     const textareas = document.querySelectorAll("textarea");
-
     textareas.forEach(textarea => {
         // Якщо textarea вже має текст, одразу адаптуємо висоту
         autoResize(textarea);
@@ -16,7 +13,33 @@ document.addEventListener("DOMContentLoaded", () => {
         textarea.addEventListener("input", function() {
         autoResize(textarea);
         });
-    });
+    }); // редагування розміру коментаря
+
+    const factoryInput = document.getElementById('factory');
+    const factoryOptions = document.getElementById('factoryOptions');
+
+    // Функція для завантаження CSV файлу (наприклад, 'factories.csv')
+    fetch('./data/factories.csv')
+        .then(response => response.text())
+        .then(data => {
+            // Парсинг CSV                                    
+            const lines = data.trim().split('\n');
+            lines.slice(1).forEach(line => {                
+                const [factoryCode, factoryName] = line.split(',');    
+                factories.push({ name: factoryName, code: factoryCode });
+
+                // Додавання кожного заводу до списку
+                const option = document.createElement('div');
+                option.textContent = factoryName;
+                option.addEventListener('click', () => {   
+                        //    
+                    console.log(factoryName);                            
+                    factoryInput.value = factoryName;
+                    alert(`Вибрано завод: ${factoryName}, Код: ${factoryCode}`);
+                }); 
+                factoryOptions.appendChild(option);
+            });
+        });
     
 }); // Закрити форму при старті сторінки
 
@@ -42,6 +65,20 @@ function btnCloseModalConfirm() {
 // 
 // Взаємодія з базою
 // 
+
+// Функція фільтрації варіантів
+function filterFactories(listId, query) {
+    const options = factoryOptions.querySelectorAll(`div`);
+    options.forEach(option => {
+        const optionText = option.textContent.toLowerCase();
+        if (optionText.includes(query.toLowerCase())) {
+            option.style.display = 'block';  // Показуємо варіанти, що відповідають пошуку
+        } else {
+            option.style.display = 'none';  // Сховуємо непотрібні варіанти
+        }
+    });
+}
+
 
 
 // 
@@ -83,7 +120,7 @@ function submitOrder() {
         return;
     }
 
-    document.getElementById("OrderId").textContent = generateOrderNumber();
+    document.getElementById("OrderId").textContent = generateOrderNumber(factory);
     document.getElementById("dateConfirm").value = date;
     document.getElementById("productConfirm").value = product;
     document.getElementById("quantityConfirm").value = quantity;
@@ -145,11 +182,21 @@ document.addEventListener("click", function (event) {
     }
 });
 
+document.getElementById('factory').addEventListener('input', () => {
+    document.getElementById('factoryOptions').style.display = "block";
+})
+document.getElementById('factory').addEventListener('blur', () => {
+    document.getElementById('factoryOptions').style.display = "none";
+})
 
 //
 // Допоміжні функції
 
-function generateOrderNumber() {
+function generateOrderNumber(_factoryName) {
+    console.log(_factoryName);
+    factoryCode = factories.find(item => item.name == _factoryName);
+    console.log(factoryCode);
+    
     return "BIL" + Math.floor(Math.random() * 1000000000)
 } ///
 
