@@ -66,3 +66,119 @@ textarea #comment {
     position: relative;
     padding-right: 10% !important;
 }
+
+
+/*Для блоку продукту*/
+
+/* Оформлення контейнера поля та хрестика */
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Стиль поля вводу */
+.dropdown-input {
+    width: 100%;
+    padding-right: 30px; /* Додаємо місце для хрестика */
+    padding-left: 8px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+/* Хрестик очищення */
+.clear-btn {
+    position: absolute;
+    right: 8px; /* Хрестик прилягає до правого краю */
+    top: 50%; /* Центрування хрестика */
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--accent-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ховер для хрестика */
+.clear-btn:hover {
+    color: var(--main-hover-color);
+    font-weight: bold;
+}
+
+/* Список опцій */
+.options-list {
+    position: absolute;
+    top: 100%; /* Відразу під полем */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 100px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.options-list div {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.options-list div:hover {
+    background-color: var(--background-color);
+}
+
+/*Для блоку матеріали*/
+
+.custom-preview table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color:   
+   #f2f2f2;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: white; }
+
+
+
+
+    /*---2---update---*/
+
+    .custom-preview table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color:   
+       #f2f2f2;
+      }
+      
+      th {
+        background-color: #4CAF50;
+        color: white; }

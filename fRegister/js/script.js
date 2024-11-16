@@ -221,4 +221,72 @@ function getTodayDate() {
     return `${year}-${month}-${day}`;
 }
 
+//-----------1-------апдейт-------------------//
+
+function clearProduct() {
+    const productInput = document.getElementById('product');
+    productInput.value = ''; // Очищаємо значення
+    document.getElementById('productOptions').style.display = 'none'; // Ховаємо список
+}
+
+function toggleOptions(listId) {
+    const optionsList = document.getElementById(listId);
+    const currentDisplay = optionsList.style.display;
+
+    // Перемикаємо видимість списку
+    optionsList.style.display = currentDisplay === "none" ? "block" : "none";
+}
+
+function selectOption(inputId, value) {
+    document.getElementById(inputId).value = value;
+    document.getElementById(inputId + "Options").style.display = "none";
+}
+
+document.addEventListener("click", function (event) {
+    const productOptions = document.getElementById("productOptions");
+
+    if (!event.target.closest(".custom-select.select-product")) {
+        productOptions.style.display = "none";
+    }
+});
+
+document.getElementById('product').removeEventListener('input', filterOptions);
+
+//-----------------2-------update--------------//
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("data/materials.csv")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            console.log("Файл завантажено успішно.");
+            return response.text();
+        })
+        .then(csvData => {
+            console.log("Вміст CSV-файлу:", csvData);
+            populateTable(csvData);
+        })
+        .catch(error => {
+            console.error("Помилка завантаження CSV:", error);
+        });
+});
+
+function populateTable(csvData) {
+    const rows = csvData.trim().split("\n");
+    const tableBody = document.querySelector("#materials-table tbody");
+    tableBody.innerHTML = ""; // Очистити старі дані
+
+    rows.forEach(row => {
+        const cols = row.split(",");
+        const tr = document.createElement("tr");
+        cols.forEach(col => {
+            const td = document.createElement("td");
+            td.textContent = col.trim();
+            tr.appendChild(td);
+        });
+        tableBody.appendChild(tr);
+    });
+}
+
 

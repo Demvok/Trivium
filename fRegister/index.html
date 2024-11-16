@@ -38,19 +38,29 @@
                 <div class="hor-block">
                     <label for="product">Вибрати продукт <span class="required">*</span></label>
                     <div class="custom-select select-product">
+                        <!-- Поле вводу з хрестиком -->
                         <div class="dropdown">
-                            <input  class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" onclick="filterOptions('productOptions', this.value)" oninput="filterOptions('productOptions', this.value)">
+                            <input 
+                                class="dropdown-input" 
+                                type="text" 
+                                id="product" 
+                                placeholder="Введіть ключове значення" 
+                                readonly 
+                                onclick="toggleOptions('productOptions')"
+                            >
+                            <!-- Хрестик для очищення -->
+                            <span class="clear-btn" onclick="clearProduct()">&#x2715;</span>
                         </div>
-                        
-                        <div class="options-list" id="productOptions">
+                        <!-- Список опцій -->
+                        <div class="options-list" id="productOptions" style="display: none;">
                             <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
                             <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
                             <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
                             <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
                             <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
-                        </div>        
+                        </div>
                     </div>
-                </div>                 
+                </div>                
 
                 <div class="hor-block">
                     <label for="quantity">Введіть потрібну кількість <span class="required">*</span></label>
@@ -74,7 +84,7 @@
                 <div class="hor-block">
                     <label for="date">Дата замовлення: <span class="required">*</span></label>
                     <div class="custom-select">
-                        <input type="date" id="date" value="2024-11-13">
+                        <input type="date" id="date" value="2024-11-13"> 
                     </div>
                 </div>               
                 
@@ -149,7 +159,7 @@
         <div class="hor-block">
             <h3>Список матеріалів</h3>
             <div class="custom-preview">
-                <table>
+                <table id="materials-table">
                     <thead>
                         <tr>
                             <th>Матеріал</th>
@@ -158,26 +168,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>M1</td>
-                            <td>10</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>M2</td>
-                            <td>8</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>M3</td>
-                            <td>3</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>M4</td>
-                            <td>9</td>
-                            <td>5</td>
-                        </tr>
+                        <!-- Дані будуть підставлені динамічно -->
                     </tbody>
                 </table>
             </div>
