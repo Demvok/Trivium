@@ -183,8 +183,75 @@ textarea {
     background-color: transparent;
 }
 
+/*Темніший колір тексту*/
+
 .hor-block input::placeholder{
-    color: rgb(51, 51, 51);
+    color: rgb(30, 30, 30);
 }
-/*-----------------------------------*/
+
+.hor-block textarea{
+    color: rgb(30, 30, 30);
+}
+
+.custom-preview input{
+    color: rgb(30, 30, 30);
+}
+
+
+/*Оновлений інтерфес списку матеріалів*/
+
+.custom-preview-materials {
+    display: flex;
+    justify-content: center; /* Центрування таблиці */
+    align-items: center;
+    margin: 20px auto; /* Відступи навколо */
+    padding: 15px;
+    border-radius: 12px; /* Округлення контейнера */
+    background-color: #fff; /* Білий фон контейнера */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Легка тінь */
+    max-width: 100%; /* Адаптивність */
+    overflow: hidden; /* Запобігання виходу таблиці за межі */
+}
+
+.custom-preview-materials table {
+    border-spacing: 10px; /* Відступи між клітинками */
+    width: 100%; /* Таблиця займає всю ширину контейнера */
+    max-width: 100%; /* Адаптивність */
+    font-size: 16px; /* Розмір тексту */
+}
+
+.custom-preview-materials table th {
+    font-weight: bold;
+    background-color: #6fbf73; /* Зелений фон заголовків */
+    color: #fff; /* Білий текст */
+    padding: 12px; /* Внутрішні відступи */
+    text-align: center; /* Текст по центру */
+    border-radius: 8px; /* Скруглення країв заголовків */
+    font-size: 18px; /* Розмір тексту */
+}
+
+.custom-preview-materials table td {
+    background-color: #e3eebe; /* Світло-зелений фон клітинок */
+    color: #333; /* Темний текст */
+    padding: 10px; /* Внутрішні відступи */
+    text-align: center; /* Текст по центру */
+    border-radius: 8px; /* Скруглення країв клітинок */
+    font-size: 16px; /* Розмір тексту */
+}
+
+/* Відступи між рядками таблиці */
+.custom-preview-materials table tr {
+    margin-bottom: 10px; /* Відступ між рядками */
+}
+
+/* Для заголовка в межах .custom-preview-materials */
+.custom-preview-materials h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px; /* Відступ перед таблицею */
+    text-align: center; /* Центрування заголовка */
+}
+
+
 

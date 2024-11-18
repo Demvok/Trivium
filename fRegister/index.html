@@ -29,38 +29,28 @@
 
 <!-- Перше модальне вікно -->
 
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <div class="modal-content">
-                <div class="logo-container"><img src="img/logo.svg" alt="Trivium Packaging"></div>
-                <div class="hor-block"><h2>Реєстрація замовлення</h2></div>
-                
-                <div class="hor-block">
-                    <label for="product">Вибрати продукт <span class="required">*</span></label>
-                    <div class="custom-select select-product">
-                        <!-- Поле вводу з хрестиком -->
-                        <div class="dropdown">
-                            <input 
-                                class="dropdown-input" 
-                                type="text" 
-                                id="product" 
-                                placeholder="Введіть ключове значення" 
-                                readonly 
-                                onclick="toggleOptions('productOptions')"
-                            >
-                            <!-- Хрестик для очищення -->
-                            <span class="clear-btn" onclick="clearProduct()">&#x2715;</span>
-                        </div>
-                        <!-- Список опцій -->
-                        <div class="options-list" id="productOptions" style="display: none;">
-                            <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
-                            <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
-                            <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
-                            <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
-                            <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
-                        </div>
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-content">
+            <div class="logo-container"><img src="img/logo.svg" alt="Trivium Packaging"></div>
+            <div class="hor-block"><h2>Реєстрація замовлення</h2></div>
+            
+            <div class="hor-block">
+                <label for="product">Вибрати продукт <span class="required">*</span></label>
+                <div class="custom-select select-product">
+                    <div class="dropdown">
+                        <input  class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" onclick="filterOptions('productOptions', this.value)" oninput="filterOptions('productOptions', this.value)">
                     </div>
-                </div>                
+                    
+                    <div class="options-list" id="productOptions">
+                        <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
+                        <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
+                        <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
+                        <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
+                        <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
+                    </div>        
+                </div>
+            </div>               
 
                 <div class="hor-block">
                     <label for="quantity">Введіть потрібну кількість <span class="required">*</span></label>
@@ -158,7 +148,7 @@
         
         <div class="hor-block">
             <h3>Список матеріалів</h3>
-            <div class="custom-preview">
+            <div class="custom-preview-materials">
                 <table id="materials-table">
                     <thead>
                         <tr>
