@@ -39,18 +39,11 @@
                 <label for="product">Вибрати продукт <span class="required">*</span></label>
                 <div class="custom-select select-product">
                     <div class="dropdown">
-                        <input  class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" onclick="filterOptions('productOptions', this.value)" oninput="filterOptions('productOptions', this.value)">
+                        <input class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення">
                     </div>
-                    
-                    <div class="options-list" id="productOptions">
-                        <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
-                        <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
-                        <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
-                        <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
-                        <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
-                    </div>        
+                    <div class="options-list" id="productOptions"></div>
                 </div>
-            </div>               
+            </div>              
 
                 <div class="hor-block">
                     <label for="quantity">Введіть потрібну кількість <span class="required">*</span></label>
