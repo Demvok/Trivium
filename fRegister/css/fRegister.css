@@ -38,34 +38,29 @@ textarea #comment {
     margin-top: 10px;
 }
 
- /* Стилізація кнопки
- .dropdown-btn {
-    position: absolute;
-    right: 10px;
-    top: 45%;
-    cursor: pointer;
-    color: black;
-    width: 17px;
-    transition: all 0.5s;
-    
-    
-}
-
-.dropdown-btn:hover{
-    width: 18px;
-    transition: all 0.5s;
-    /* transform: rotate(180deg); 
-    
-}
-
-.dropdown-btn.active{
-    transform: rotate(180deg);
-} */
-
 .dropdown input{
     position: relative;
     padding-right: 10% !important;
 }
+
+#status{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+
+.status-todo-select{
+    flex-grow: 1;
+}
+
+
+
+
 
 
 /*Для блоку продукту*/
@@ -135,50 +130,3 @@ textarea #comment {
 .options-list div:hover {
     background-color: var(--background-color);
 }
-
-/*Для блоку матеріали*/
-
-.custom-preview table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color:   
-   #f2f2f2;
-  }
-  
-  th {
-    background-color: #4CAF50;
-    color: white; }
-
-
-
-
-    /*---2---update---*/
-
-    .custom-preview table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-      
-      th, td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-      
-      tr:nth-child(even) {
-        background-color:   
-       #f2f2f2;
-      }
-      
-      th {
-        background-color: #4CAF50;
-        color: white; }

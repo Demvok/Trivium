@@ -132,7 +132,7 @@
 
         <div class="hor-block" id="status-container">
             <label>Статус виконання:</label>
-            <div class="custom-preview">
+            <div class="custom-preview status-todo-select">
                 <select id="status">
                     <option>В очікуванні</option>
                     <option>Виконується</option>
@@ -149,18 +149,17 @@
         <div class="hor-block">
             <h3>Список матеріалів</h3>
             <div class="custom-preview-materials">
-                <table id="materials-table">
-                    <thead>
-                        <tr>
-                            <th>Матеріал</th>
-                            <th>Потрібно</th>
-                            <th>Наявно</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+
+                <div class="materials-table">
+                    <div class="material-table-header">
+                        <p class="material-header-label">Матеріал</p>
+                        <p class="material-header-label">Потрібно</p>
+                        <p class="material-header-label">Наявно</p>
+                    </div>
+                    <div class="material-table-content">
                         <!-- Дані будуть підставлені динамічно -->
-                    </tbody>
-                </table>
+                    </div>
+                </div>
             </div>
         </div>
                 

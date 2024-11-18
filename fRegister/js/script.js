@@ -274,18 +274,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function populateTable(csvData) {
     const rows = csvData.trim().split("\n");
-    const tableBody = document.querySelector("#materials-table tbody");
+    const tableBody = document.getElementsByClassName("material-table-content")[0];
     tableBody.innerHTML = ""; // Очистити старі дані
+    const material_classes = [""]
+
+
 
     rows.forEach(row => {
         const cols = row.split(",");
-        const tr = document.createElement("tr");
-        cols.forEach(col => {
-            const td = document.createElement("td");
-            td.textContent = col.trim();
-            tr.appendChild(td);
-        });
-        tableBody.appendChild(tr);
+        const raw = document.createElement("div");
+        raw.classList.add('material-table-content-row')
+
+
+
+        let material_name = document.createElement("div")
+        material_name.classList.add('material-name')
+        material_name.textContent = cols[0].trim();
+        raw.appendChild(material_name);
+
+
+
+        let material_needed = document.createElement("div")
+        material_needed.classList.add('material-needed')
+        material_needed.textContent = cols[1].trim();
+        if (parseInt(cols[1].trim()) > parseInt(cols[2].trim())) {
+            material_needed.classList.add('material-lacking')
+            const img = document.createElement("img")
+            img.src = "img\\error.svg"
+            material_needed.appendChild(img)
+        }
+        
+        raw.appendChild(material_needed);
+
+
+
+        let material_amount = document.createElement("div")
+        material_name.classList.add('material-count')
+        material_amount.textContent = cols[2].trim();
+        raw.appendChild(material_amount);
+
+
+        tableBody.appendChild(raw);
     });
 }
 
