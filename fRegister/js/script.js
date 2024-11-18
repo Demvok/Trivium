@@ -319,3 +319,90 @@ function populateTable(csvData) {
 }
 
 
+//Додавання списку продуктів ..................................................................................................
+
+document.addEventListener("DOMContentLoaded", () => {
+    const productInput = document.getElementById('product');
+    const productOptions = document.getElementById('productOptions');
+    let productList = []; // Масив для збереження продуктів з файлу
+
+    // Завантаження даних із текстового файлу
+    fetch('./data/product.txt')
+        .then(response => response.text())
+        .then(data => {
+            // Розділяємо дані на рядки та видаляємо дублікат
+            const lines = data.trim().split('\n');
+            productList = Array.from(new Set(lines.map(line => line.trim()))); // Унікальні продукти
+
+            // Додаємо кожен продукт у випадаючий список
+            productList.forEach(productName => {
+                if (productName) {
+                    const option = document.createElement('div');
+                    option.textContent = productName;
+                    option.onclick = () => {
+                        productInput.value = productName;
+                        productOptions.style.display = 'none';
+                    };
+                    productOptions.appendChild(option);
+                }
+            });
+        });
+
+    // Показати всі опції, якщо поле порожнє, під час фокусу
+    productInput.addEventListener('focus', () => {
+        if (!productInput.value.trim()) {
+            const options = productOptions.querySelectorAll('div');
+            options.forEach(option => {
+                option.style.display = 'block';
+            });
+            productOptions.style.display = 'block';
+        }
+    });
+
+    // Фільтрація опцій на основі введення
+    productInput.addEventListener('input', () => {
+        const query = productInput.value.toLowerCase();
+        const options = productOptions.querySelectorAll('div');
+        productOptions.style.display = 'block';
+        options.forEach(option => {
+            if (option.textContent.toLowerCase().includes(query)) {
+                option.style.display = 'block';
+            } else {
+                option.style.display = 'none';
+            }
+        });
+    });
+
+    // Закриття списку при кліку поза ним
+    document.addEventListener("click", (event) => {
+        if (!event.target.closest(".custom-select.select-product")) {
+            productOptions.style.display = "none";
+        }
+    });
+
+    // Перевірка введеного значення на відповідність продуктам у списку
+    productInput.addEventListener('blur', () => {
+        const inputValue = productInput.value.trim();
+        if (inputValue && !productList.includes(inputValue)) {
+            alert("Такого продукту немає");
+            productInput.value = ''; // Очистити поле
+        }
+    });
+});
+
+
+//Перевірка поля заводів з CSV файлом ................................................................................................
+
+document.getElementById('factory').addEventListener('blur', () => {
+    const inputValue = document.getElementById('factory').value.trim();
+    
+    // Перевіряємо, чи існує введене значення у списку заводів
+    const factoryExists = factories.some(factory => factory.name.toLowerCase() === inputValue.toLowerCase());
+    
+    if (!factoryExists && inputValue !== '') {
+        alert("Такого заводу немає");
+    }
+});
+
+
+
