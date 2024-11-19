@@ -39,7 +39,7 @@
                 <label for="product">Вибрати продукт <span class="required">*</span></label>
                 <div class="custom-select select-product">
                     <div class="dropdown">
-                        <input class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення">
+                        <input class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" autocomplete="off">
                     </div>
                     <div class="options-list" id="productOptions"></div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="hor-block">                    
                     <label for="factory">Вибрати кінцевий завод <span class="required">*</span></label>
                     <div class="custom-select select-factory">
-                        <input type="text" id="factory" placeholder="Введіть ключове значення" onclick="filterFactories()" oninput="filterFactories()">
+                        <input type="text" id="factory" placeholder="Введіть ключове значення" onclick="filterFactories()" oninput="filterFactories()" autocomplete="off">
                         <div class="options-list" id="factoryOptions">
                             <!-- Варіанти будуть додаватися тут динамічно -->
                         </div>
