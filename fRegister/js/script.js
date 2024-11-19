@@ -40,6 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     factoryInput.value = factoryName;
                     factoryOptions.style.display = 'none'
                     
+                    // Перевіряємо, чи існує введене значення у списку заводів
+                    const inputValue = document.getElementById('factory').value.trim();
+                    const factoryExists = factories.some(factory => factory.name.toLowerCase() === inputValue.toLowerCase());
+                    if (!factoryExists && inputValue !== '') {
+                        alert("Такого заводу немає");
+                    }
                 }
                 factoryOptions.appendChild(option);
 
@@ -178,11 +184,6 @@ function filterOptions(listId, inputValue) {
     });
 }
 
-// function selectOption(inputId, value) {   
-//     document.getElementById(inputId).value = value;
-//     document.getElementById(inputId + "Options").style.display = "none";
-// }
-
 document.addEventListener("click", function (event) {
     const productOptions = document.getElementById("productOptions");
     const factoryOptions = document.getElementById("factoryOptions");
@@ -304,6 +305,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     option.onclick = () => {                                                
                         productInput.value = productName;
                         productOptions.style.display = 'none';
+
+                        // Перевірка введеного значення на відповідність продуктам у списку
+                        const inputValue = productInput.value.trim();
+                        if (inputValue && !productList.includes(inputValue)) {
+                            alert("Такого продукту немає");
+                            productInput.value = ''; // Очистити поле
+                        }
                     };
                     productOptions.appendChild(option);
                 }
@@ -341,30 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
             productOptions.style.display = "none";
         }
     });
-
-    // Перевірка введеного значення на відповідність продуктам у списку
-    productInput.addEventListener('blur', () => {
-        const inputValue = productInput.value.trim();
-        if (inputValue && !productList.includes(inputValue)) {
-            alert("Такого продукту немає");
-            productInput.value = ''; // Очистити поле
-        }
-    });
-});
-
-
-//Перевірка поля заводів з CSV файлом ................................................................................................
-
-document.getElementById('factory').addEventListener('blur', () => {
-    const inputValue = document.getElementById('factory').value.trim();
     
-    // Перевіряємо, чи існує введене значення у списку заводів
-    const factoryExists = factories.some(factory => factory.name.toLowerCase() === inputValue.toLowerCase());
-    
-    if (!factoryExists && inputValue !== '') {
-        alert("Такого заводу немає");
-    }
 });
-
 
 
