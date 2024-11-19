@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const [factoryCode, factoryName] = line.trim().split(',');    
                 factories.push({ name: factoryName, code: factoryCode });
 
-
                 // Додавання кожного заводу до списку
                 const option = document.createElement('div');
                 option.textContent = factoryName;
@@ -317,6 +316,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
+
+
 
     // Показати всі опції, якщо поле порожнє, під час фокусу
     productInput.addEventListener('focus', () => {
