@@ -27,6 +27,12 @@ body {
     margin: 0;
 }
 
+textarea{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
 .open-modal-btn {
     padding: 10px 20px;
     font-size: 16px;
@@ -48,7 +54,7 @@ body {
 
 .modal {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     background-color: white;
     border-radius: 8px;
     padding: 20px;
@@ -129,15 +135,6 @@ button:hover {
     position: relative;
 }
 
-.custom-select input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
 .options-list {
     position: absolute;
     width: 100%;
@@ -145,7 +142,7 @@ button:hover {
     border: 1px solid #ccc;
     max-height: 100px;
     overflow-y: auto;
-    display: none;
+    display: block;
     z-index: 10;
 }
 
@@ -159,6 +156,7 @@ button:hover {
 }
 
 textarea {
+    resize: none;
     height: 60px;
     width: 100%;
     padding: 10px;
@@ -170,11 +168,117 @@ textarea {
 
 /* Перегляд обраних опцій у полі */
 
-.custom-preview input {
+.hor-block input{
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     font-size: 14px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 4px;
+    max-width: 100%;
 }
+
+
+.hor-block input:disabled{
+    background-color: transparent;
+}
+
+/*Темніший колір тексту*/
+
+.hor-block input::placeholder{
+    color: rgb(30, 30, 30);
+}
+
+.hor-block textarea{
+    color: rgb(30, 30, 30);
+}
+
+.custom-preview input{
+    color: rgb(30, 30, 30);
+}
+
+
+/*Оновлений інтерфес списку матеріалів*/
+
+.custom-preview-materials {
+    display: flex;
+    justify-content: center; /* Центрування таблиці */
+    align-items: center;
+    margin: 20px auto; /* Відступи навколо */
+    padding: 0px, 15px, 0px, 15px;
+    border-radius: 12px; /* Округлення контейнера */
+    background-color: #fff; /* Білий фон контейнера */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Легка тінь */
+    max-width: 100%; /* Адаптивність */
+}
+
+
+.materials-table{
+    width: 100%;
+    padding: 15px 10px;
+}
+
+.material-table-header{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+}
+
+.material-header-label{
+    background-color: #6CC24A;
+    opacity: 72%;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center; /* Текст по центру */
+    font-size: 18px; /* Розмір тексту */
+    margin: 0;
+}
+
+
+.material-table-content{
+    margin-top: 10px;
+    display: grid;
+    grid-gap: 10px;
+}
+
+
+
+.material-table-content-row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    align-items: center; /* Центрує елементи по вертикалі */
+}
+
+
+
+.material-table-content-row *{
+    background-color: #BAC24A;
+    opacity: 66%;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal; /* Дозволяє перенос тексту */
+    display: flex;
+    align-items: center; /* Центрує текст по вертикалі */
+    justify-content: center; /* Центрує текст по горизонталі */
+    height: 100%; /* Забезпечує, що фон заповнює колонку */
+}
+
+.material-needed img{
+    display: none;
+}
+
+
+.material-needed.material-lacking img{
+    display: block;
+    opacity: 100%;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+}
+
+
+ 

@@ -5,11 +5,128 @@
 }
 
 textarea #comment {
-    resize: none; 
-    height: 120px;
+    height: 60px;
+}
+
+#commentConfirm {
+    height: 40px;
 }
 
 #modalOverlay2 .modal {
     max-height: 80vh; /* Встановлення максимальної висоти модального вікна */
     overflow-y: auto; /* Додає вертикальну прокрутку при необхідності */
+}
+
+#status-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    min-height: 40px;
+    margin: 10px 0;
+}
+
+#status-container label {
+    margin-top: 0px;
+    margin-right: 10%;
+}
+
+#ConfirmHeader  h2{
+    margin: 0;
+}
+
+#OrderId {
+    margin-top: 10px;
+}
+
+.dropdown input{
+    position: relative;
+    padding-right: 10% !important;
+}
+
+#status{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
+
+.status-todo-select{
+    flex-grow: 1;
+}
+
+
+
+
+
+
+/*Для блоку продукту*/
+
+/* Оформлення контейнера поля та хрестика */
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Стиль поля вводу */
+.dropdown-input {
+    width: 100%;
+    padding-right: 30px; /* Додаємо місце для хрестика */
+    padding-left: 8px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+/* Хрестик очищення */
+.clear-btn {
+    position: absolute;
+    right: 8px; /* Хрестик прилягає до правого краю */
+    top: 50%; /* Центрування хрестика */
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--accent-color);
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ховер для хрестика */
+.clear-btn:hover {
+    color: var(--main-hover-color);
+    font-weight: bold;
+}
+
+/* Список опцій */
+.options-list {
+    position: absolute;
+    top: 100%; /* Відразу під полем */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 100px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.options-list div {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.options-list div:hover {
+    background-color: var(--background-color);
 }

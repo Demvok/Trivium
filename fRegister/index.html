@@ -27,27 +27,23 @@
 
     </div>
 
-<!----------------------------------- Перше модальне вікно--------------------------------------->
+<!-- Перше модальне вікно -->
 
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal">
-            <div class="modal-content">
-                <div class="logo-container"><img src="img/logo.svg" alt="Trivium Packaging"></div>
-                <div class="hor-block"><h2>Реєстрація замовлення</h2></div>
-                
-                <div class="hor-block">
-                    <label for="product">Вибрати продукт <span class="required">*</span></label>
-                    <div class="custom-select">
-                        <input type="text" id="product" placeholder="Введіть ключове значення" oninput="filterOptions('productOptions', this.value)">
-                        <div class="options-list" id="productOptions">
-                            <div onclick="selectOption('product', 'Продукт 1')">Продукт 1</div>
-                            <div onclick="selectOption('product', 'Продукт 2')">Продукт 2</div>
-                            <div onclick="selectOption('product', 'Продукт 3')">Продукт 3</div>
-                            <div onclick="selectOption('product', 'Продукт 33')">Продукт 33</div>
-                            <div onclick="selectOption('product', 'Продукт 34')">Продукт 34</div>
-                        </div>
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-content">
+            <div class="logo-container"><img src="img/logo.svg" alt="Trivium Packaging"></div>
+            <div class="hor-block"><h2>Реєстрація замовлення</h2></div>
+            
+            <div class="hor-block">
+                <label for="product">Вибрати продукт <span class="required">*</span></label>
+                <div class="custom-select select-product">
+                    <div class="dropdown">
+                        <input class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення">
                     </div>
-                </div>                 
+                    <div class="options-list" id="productOptions"></div>
+                </div>
+            </div>              
 
                 <div class="hor-block">
                     <label for="quantity">Введіть потрібну кількість <span class="required">*</span></label>
@@ -57,24 +53,21 @@
                 </div>
                 
                 
-                <div class="hor-block">
+                <div class="hor-block">                    
                     <label for="factory">Вибрати кінцевий завод <span class="required">*</span></label>
-                    <div class="custom-select">
-                        <input type="text" id="factory" placeholder="Введіть ключове значення" oninput="filterOptions('factoryOptions', this.value)">
+                    <div class="custom-select select-factory">
+                        <input type="text" id="factory" placeholder="Введіть ключове значення" onclick="filterFactories()" oninput="filterFactories()">
                         <div class="options-list" id="factoryOptions">
-                            <div onclick="selectOption('factory', 'Завод 1')">Завод 1</div>
-                            <div onclick="selectOption('factory', 'Завод 2')">Завод 2</div>
-                            <div onclick="selectOption('factory', 'Завод 3')">Завод 3</div>
-                            <div onclick="selectOption('factory', 'Завод 32')">Завод 32</div>
-                            <div onclick="selectOption('factory', 'Завод 33')">Завод 33</div>
+                            <!-- Варіанти будуть додаватися тут динамічно -->
                         </div>
                     </div>
                 </div>
                 
+                
                 <div class="hor-block">
                     <label for="date">Дата замовлення: <span class="required">*</span></label>
                     <div class="custom-select">
-                        <input type="date" id="date" value="2024-11-13">
+                        <input type="date" id="date" value="2024-11-13"> 
                     </div>
                 </div>               
                 
@@ -93,81 +86,76 @@
     </div>
 
 
-<!----------------------------------- Друге модальне вікно--------------------------------------->
+<!-- Друге модальне вікно -->
 
 <div id="modalOverlay2" class="modal-overlay">
     <div class="modal">
-        <h2>Замовлення № <span id="orderNumber"></span></h2>
-        <label>Дата замовлення:</label>
-        <div class="custom-preview">
-            <input type="date" id="dateConfirm" disabled>
+        <div class="hor-block" id="ConfirmHeader">
+            <h2>Замовлення №</h2>
+            <h3 id="OrderId">DEV00000000</h3>
         </div>
         
-        <label>Продукт:</label>
-        <div class="custom-preview">
-            <input type="text" id="productConfirm" disabled>
-        </div>
+        <div class="hor-block">            
+            <label>Дата замовлення:</label>
+            <div class="custom-preview">
+                <input type="date" id="dateConfirm" disabled>
+            </div>
+        </div>        
         
-        <label>Потрібна кількість:</label>
-        <div class="custom-preview">
-            <input type="number" id="quantityConfirm" disabled>
-        </div>
+        <div class="hor-block">
+            <label>Продукт:</label>
+            <div class="custom-preview">
+                <input type="text" id="productConfirm" disabled>
+            </div>
+        </div>        
         
-        <label>Обрана специфікація:</label>
-        <div class="custom-preview">
-            <input type="text" id="factoryConfirm" disabled>
-        </div>
+        <div class="hor-block">
+            <label>Потрібна кількість:</label>
+            <div class="custom-preview">
+                <input type="number" id="quantityConfirm" disabled>
+            </div>
+        </div>        
+        
+        <div class="hor-block">
+            <label>Обрана специфікація:</label>
+            <div class="custom-preview">
+                <input type="text" id="factoryConfirm" disabled>
+            </div>
+        </div>        
 
-        <label>Статус виконання:</label>
-        <div class="custom-preview">
-            <select id="status" disabled>
-                <option>В очікуванні</option>
-                <option>Виконується</option>
-                <option>Завершено</option>
-            </select>
-        </div>
+        <div class="hor-block" id="status-container">
+            <label>Статус виконання:</label>
+            <div class="custom-preview status-todo-select">
+                <select id="status">
+                    <option>В очікуванні</option>
+                    <option>Виконується</option>
+                    <option>Завершено</option>
+                </select>
+            </div>
+        </div>        
         
-        <label>Доданий коментар:</label>
-        <div class="custom-preview">
+        <div class="hor-block">
+            <label>Доданий коментар:</label>
             <textarea id="commentConfirm" disabled></textarea>
         </div>
         
+        <div class="hor-block">
+            <h3>Список матеріалів</h3>
+            <div class="custom-preview-materials">
 
-        <h3>Список матеріалів</h3>
-        <div class="custom-preview">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Матеріал</th>
-                        <th>Потрібно</th>
-                        <th>Наявно</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>M1</td>
-                        <td>10</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>M2</td>
-                        <td>8</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>M3</td>
-                        <td>3</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>M4</td>
-                        <td>9</td>
-                        <td>5</td>
-                    </tr>
-                </tbody>
-            </table>
+                <div class="materials-table">
+                    <div class="material-table-header">
+                        <p class="material-header-label">Матеріал</p>
+                        <p class="material-header-label">Потрібно</p>
+                        <p class="material-header-label">Наявно</p>
+                    </div>
+                    <div class="material-table-content">
+                        <!-- Дані будуть підставлені динамічно -->
+                    </div>
+                </div>
+            </div>
         </div>
-        
+                
         <div class="modal-nav-btns">
             <button class="edit-btn" onclick="btnEditOrder()">Змінити</button>
             <button onclick="btnCloseModalConfirm()">Підтвердити</button>
