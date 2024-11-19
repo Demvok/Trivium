@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const [factoryCode, factoryName] = line.trim().split(',');    
                 factories.push({ name: factoryName, code: factoryCode });
 
-
                 // Додавання кожного заводу до списку
                 const option = document.createElement('div');
                 option.textContent = factoryName;
@@ -40,6 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     factoryInput.value = factoryName;
                     factoryOptions.style.display = 'none'
                     
+                    // Перевіряємо, чи існує введене значення у списку заводів
+                    const inputValue = document.getElementById('factory').value.trim();
+                    const factoryExists = factories.some(factory => factory.name.toLowerCase() === inputValue.toLowerCase());
+                    if (!factoryExists && inputValue !== '') {
+                        alert("Такого заводу немає");
+                    }
                 }
                 factoryOptions.appendChild(option);
 
@@ -178,11 +183,6 @@ function filterOptions(listId, inputValue) {
     });
 }
 
-function selectOption(inputId, value) {
-    document.getElementById(inputId).value = value;
-    document.getElementById(inputId + "Options").style.display = "none";
-}
-
 document.addEventListener("click", function (event) {
     const productOptions = document.getElementById("productOptions");
     const factoryOptions = document.getElementById("factoryOptions");
@@ -221,37 +221,6 @@ function getTodayDate() {
     return `${year}-${month}-${day}`;
 }
 
-//-----------1-------апдейт-------------------//
-
-function clearProduct() {
-    const productInput = document.getElementById('product');
-    productInput.value = ''; // Очищаємо значення
-    document.getElementById('productOptions').style.display = 'none'; // Ховаємо список
-}
-
-function toggleOptions(listId) {
-    const optionsList = document.getElementById(listId);
-    const currentDisplay = optionsList.style.display;
-
-    // Перемикаємо видимість списку
-    optionsList.style.display = currentDisplay === "none" ? "block" : "none";
-}
-
-function selectOption(inputId, value) {
-    document.getElementById(inputId).value = value;
-    document.getElementById(inputId + "Options").style.display = "none";
-}
-
-document.addEventListener("click", function (event) {
-    const productOptions = document.getElementById("productOptions");
-
-    if (!event.target.closest(".custom-select.select-product")) {
-        productOptions.style.display = "none";
-    }
-});
-
-document.getElementById('product').removeEventListener('input', filterOptions);
-
 //-----------------2-------update--------------//
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -278,21 +247,15 @@ function populateTable(csvData) {
     tableBody.innerHTML = ""; // Очистити старі дані
     const material_classes = [""]
 
-
-
     rows.forEach(row => {
         const cols = row.split(",");
         const raw = document.createElement("div");
         raw.classList.add('material-table-content-row')
 
-
-
         let material_name = document.createElement("div")
         material_name.classList.add('material-name')
         material_name.textContent = cols[0].trim();
         raw.appendChild(material_name);
-
-
 
         let material_needed = document.createElement("div")
         material_needed.classList.add('material-needed')
@@ -301,18 +264,17 @@ function populateTable(csvData) {
             material_needed.classList.add('material-lacking')
             const img = document.createElement("img")
             img.src = "img\\error.svg"
+            img.alt = "Нестача"
+            img.title = "Даного матеріалу не вистачає на складі"
             material_needed.appendChild(img)
         }
         
         raw.appendChild(material_needed);
 
-
-
         let material_amount = document.createElement("div")
         material_name.classList.add('material-count')
         material_amount.textContent = cols[2].trim();
         raw.appendChild(material_amount);
-
 
         tableBody.appendChild(raw);
     });
@@ -339,14 +301,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (productName) {
                     const option = document.createElement('div');
                     option.textContent = productName;
-                    option.onclick = () => {
+                    option.onclick = () => {                                                
                         productInput.value = productName;
                         productOptions.style.display = 'none';
+
+                        // Перевірка введеного значення на відповідність продуктам у списку
+                        const inputValue = productInput.value.trim();
+                        if (inputValue && !productList.includes(inputValue)) {
+                            alert("Такого продукту немає");
+                            productInput.value = ''; // Очистити поле
+                        }
                     };
                     productOptions.appendChild(option);
                 }
             });
         });
+
+
 
     // Показати всі опції, якщо поле порожнє, під час фокусу
     productInput.addEventListener('focus', () => {
@@ -379,30 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
             productOptions.style.display = "none";
         }
     });
-
-    // Перевірка введеного значення на відповідність продуктам у списку
-    productInput.addEventListener('blur', () => {
-        const inputValue = productInput.value.trim();
-        if (inputValue && !productList.includes(inputValue)) {
-            alert("Такого продукту немає");
-            productInput.value = ''; // Очистити поле
-        }
-    });
-});
-
-
-//Перевірка поля заводів з CSV файлом ................................................................................................
-
-document.getElementById('factory').addEventListener('blur', () => {
-    const inputValue = document.getElementById('factory').value.trim();
     
-    // Перевіряємо, чи існує введене значення у списку заводів
-    const factoryExists = factories.some(factory => factory.name.toLowerCase() === inputValue.toLowerCase());
-    
-    if (!factoryExists && inputValue !== '') {
-        alert("Такого заводу немає");
-    }
 });
-
 
 
