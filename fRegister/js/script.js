@@ -4,72 +4,31 @@ let id = 0;
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    closeModalRegister();
-    closeModalConfirm();
-    
-    const textareas = document.querySelectorAll("textarea");
-    textareas.forEach(textarea => {
-        // Якщо textarea вже має текст, одразу адаптуємо висоту
-        autoResize(textarea);
 
-        // Додаємо обробник подій input для автоматичної зміни висоти
-        textarea.addEventListener("input", function() {
-        autoResize(textarea);
-        });
-    }); // редагування розміру коментаря
-
-    const factoryInput = document.getElementById('factory');
-    const factoryOptions = document.getElementById('factoryOptions');
-
-    // Функція для завантаження CSV файлу (наприклад, 'factories.csv')
-    fetch('./data/factories.csv')
-        .then(response => response.text())
-        .then(data => {
-            // Парсинг CSV                                    
-            const lines = data.trim().split('\n');
-            lines.slice(1).forEach(line => {                
-                const [factoryCode, factoryName] = line.trim().split(',');    
-                factories.push({ name: factoryName, code: factoryCode });
-
-                // Додавання кожного заводу до списку
-                const option = document.createElement('div');
-                option.textContent = factoryName;
-                option.onclick = () => {                         
-                    factoryInput.value = factoryName;
-                    factoryOptions.style.display = 'none'
-                    
-                    // Перевіряємо, чи існує введене значення у списку заводів
-                    const inputValue = document.getElementById('factory').value.trim();
-                    const factoryExists = factories.some(factory => factory.name.toLowerCase() === inputValue.toLowerCase());
-                    if (!factoryExists && inputValue !== '') {
-                        alert("Такого заводу немає");
-                    }
-                }
-                factoryOptions.appendChild(option);
-
-            });
-        });
-        
-    
-
-}); // Закрити форму при старті сторінки
 
 function btnOpenDialog() {
     // return openModalConfirm()
     return openModalRegister()
-} // Заглушка для кращого інтерпретування коду
+} 
+
 
 function btnSubmitOrder() {
     return submitOrder()
 }
+
+
 function btnCloseModalRegister() {
     return closeModalRegister()
 }
+
+
 function btnEditOrder() {
     document.getElementById("modalOverlay2").style.display = "none";
     document.getElementById("modalOverlay").style.display = "flex";
+    autoResize();
 }
+
+
 function btnCloseModalConfirm() {
     return closeModalConfirm()
 }
@@ -93,7 +52,27 @@ function filterFactories() {
     });
 }
 
+//
+// Блок випадаючого списку
 
+
+function filterProducts() {
+
+
+    const query = document.getElementById('product').value
+    const options = productOptions.querySelectorAll(`div`);
+;
+    
+    productOptions.style.display = 'block';
+    options.forEach(option => {
+        const optionText = option.textContent.toLowerCase();
+        if (optionText.includes(query.toLowerCase())) {
+            option.style.display = 'block';  // Показуємо варіанти, що відповідають пошуку
+        } else {
+            option.style.display = 'none';  // Сховуємо непотрібні варіанти
+        }
+    });
+}
 
 
 // 
@@ -166,51 +145,23 @@ function autoResize() {
     ta.style.height = ta.scrollHeight >= 40 ? ta.scrollHeight + 'px' : "40px"; // Встановлює висоту відповідно до вмісту
 }
 
-//
-// Блок випадаючого списку
 
-function filterOptions(listId, inputValue) {
-    const optionsList = document.getElementById(listId);
-    const options = optionsList.querySelectorAll("div");
-    optionsList.style.display = "block";
 
-    options.forEach(option => {
-        if (option.textContent.toLowerCase().includes(inputValue.toLowerCase())) {
-            option.style.display = "block";
-        } else {
-            option.style.display = "none";
-        }
-    });
-}
 
-document.addEventListener("click", function (event) {
-    const productOptions = document.getElementById("productOptions");
-    const factoryOptions = document.getElementById("factoryOptions");
 
-    if (!event.target.closest(".custom-select.select-factory")) {
-        factoryOptions.style.display = "none";
-    }
-    if (!event.target.closest(".custom-select.select-product")) {
-        productOptions.style.display = "none";
-    }
-});
-
-document.getElementById('factory').addEventListener('input', () => {
-    document.getElementById('factoryOptions').style.display = "block";
-})
 
 
 //
 // Допоміжні функції
 
 function generateOrderNumber(_factoryName, date, product) {
-    console.log(_factoryName);
+
     factoryCode = factories.find(item => item.name == _factoryName);
-    console.log(factoryCode);
+
     
     id++;
 
-    return _factoryName.slice(0, 3).toUpperCase() + date.split("-")[0].slice(-2) + product.split(" ").at(-1) + id
+    return _factoryName.slice(0, 3).toUpperCase() + date.split("-")[0].slice(-2) + extractThreeDigits(product) + id
 } ///
 
 function getTodayDate() {
@@ -221,136 +172,29 @@ function getTodayDate() {
     return `${year}-${month}-${day}`;
 }
 
-//-----------------2-------update--------------//
 
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("data/materials.csv")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            console.log("Файл завантажено успішно.");
-            return response.text();
-        })
-        .then(csvData => {
-            console.log("Вміст CSV-файлу:", csvData);
-            populateTable(csvData);
-        })
-        .catch(error => {
-            console.error("Помилка завантаження CSV:", error);
-        });
-});
 
-function populateTable(csvData) {
-    const rows = csvData.trim().split("\n");
-    const tableBody = document.getElementsByClassName("material-table-content")[0];
-    tableBody.innerHTML = ""; // Очистити старі дані
-    const material_classes = [""]
+function extractThreeDigits(productCode) {
+    // Визначаємо, якого типу продукт
 
-    rows.forEach(row => {
-        const cols = row.split(",");
-        const raw = document.createElement("div");
-        raw.classList.add('material-table-content-row')
+    // Кейс 1: продукт має формат 0,14x918x925 G/C
+    const case1 = productCode.match(/x(\d+)x/); // Знаходимо цифри між "x"
+    if (case1 != null) {
+        return case1[1]
+    }else{
+        // Кейс 2 і 3: продукт має формат OT070-ELQ7013A9A або OT62-ELQ6216A2A
+        const case2 = productCode.match(/^OT(\d+)-/); // Знаходимо цифри після "OT"
+        if (case2) {
+        const digits = case2[1];
+        return digits.length === 3 ? digits : digits.padStart(3, '0'); // Додаємо нуль, якщо цифр 2
+    }
+    }
 
-        let material_name = document.createElement("div")
-        material_name.classList.add('material-name')
-        material_name.textContent = cols[0].trim();
-        raw.appendChild(material_name);
-
-        let material_needed = document.createElement("div")
-        material_needed.classList.add('material-needed')
-        material_needed.textContent = cols[1].trim();
-        if (parseInt(cols[1].trim()) > parseInt(cols[2].trim())) {
-            material_needed.classList.add('material-lacking')
-            const img = document.createElement("img")
-            img.src = "img\\error.svg"
-            img.alt = "Нестача"
-            img.title = "Даного матеріалу не вистачає на складі"
-            material_needed.appendChild(img)
-        }
-        
-        raw.appendChild(material_needed);
-
-        let material_amount = document.createElement("div")
-        material_name.classList.add('material-count')
-        material_amount.textContent = cols[2].trim();
-        raw.appendChild(material_amount);
-
-        tableBody.appendChild(raw);
-    });
+    
+    return null; // Якщо формат не розпізнано
 }
 
 
-//Додавання списку продуктів ..................................................................................................
 
-document.addEventListener("DOMContentLoaded", () => {
-    const productInput = document.getElementById('product');
-    const productOptions = document.getElementById('productOptions');
-    let productList = []; // Масив для збереження продуктів з файлу
-
-    // Завантаження даних із текстового файлу
-    fetch('./data/product.txt')
-        .then(response => response.text())
-        .then(data => {
-            // Розділяємо дані на рядки та видаляємо дублікат
-            const lines = data.trim().split('\n');
-            productList = Array.from(new Set(lines.map(line => line.trim()))); // Унікальні продукти
-
-            // Додаємо кожен продукт у випадаючий список
-            productList.forEach(productName => {
-                if (productName) {
-                    const option = document.createElement('div');
-                    option.textContent = productName;
-                    option.onclick = () => {                                                
-                        productInput.value = productName;
-                        productOptions.style.display = 'none';
-
-                        // Перевірка введеного значення на відповідність продуктам у списку
-                        const inputValue = productInput.value.trim();
-                        if (inputValue && !productList.includes(inputValue)) {
-                            alert("Такого продукту немає");
-                            productInput.value = ''; // Очистити поле
-                        }
-                    };
-                    productOptions.appendChild(option);
-                }
-            });
-        });
-
-
-
-    // Показати всі опції, якщо поле порожнє, під час фокусу
-    productInput.addEventListener('focus', () => {
-        if (!productInput.value.trim()) {
-            const options = productOptions.querySelectorAll('div');
-            options.forEach(option => {
-                option.style.display = 'block';
-            });
-            productOptions.style.display = 'block';
-        }
-    });
-
-    // Фільтрація опцій на основі введення
-    productInput.addEventListener('input', () => {
-        const query = productInput.value.toLowerCase();
-        const options = productOptions.querySelectorAll('div');
-        productOptions.style.display = 'block';
-        options.forEach(option => {
-            if (option.textContent.toLowerCase().includes(query)) {
-                option.style.display = 'block';
-            } else {
-                option.style.display = 'none';
-            }
-        });
-    });
-
-    // Закриття списку при кліку поза ним
-    document.addEventListener("click", (event) => {
-        if (!event.target.closest(".custom-select.select-product")) {
-            productOptions.style.display = "none";
-        }
-    });
-    
-});
 
 

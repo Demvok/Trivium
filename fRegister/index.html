@@ -38,9 +38,7 @@
             <div class="hor-block">
                 <label for="product">Вибрати продукт <span class="required">*</span></label>
                 <div class="custom-select select-product">
-                    <div class="dropdown">
-                        <input class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" autocomplete="off">
-                    </div>
+                    <input class="dropdown-input" type="text" id="product" onclick="filterProducts()" oninput="filterProducts()" placeholder="Введіть ключове значення" autocomplete="off">
                     <div class="options-list" id="productOptions"></div>
                 </div>
             </div>              
@@ -167,5 +165,7 @@
 
 
 <script src="js/script.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/document-script.js"></script>
 </body>
 </html>
