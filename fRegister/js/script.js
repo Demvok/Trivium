@@ -61,7 +61,7 @@ function filterProducts() {
 
     const query = document.getElementById('product').value
     const options = productOptions.querySelectorAll(`div`);
-;
+
     
     productOptions.style.display = 'block';
     options.forEach(option => {
@@ -83,17 +83,30 @@ function filterProducts() {
 //
 // Робота форми
 
-function openModalRegister() {
-    // Очистити форму перед відкриттям
-    document.getElementById("product").value = "";
-    document.getElementById("quantity").value = "";
-    document.getElementById("factory").value = "";
-    document.getElementById("date").value = getTodayDate();
-    document.getElementById("comment").value = "";
+function openModalRegister(index) {
+    // Перевіряємо, чи передано об'єкт order
+    order = filterOrdersList[index]
 
+
+    if (order) {
+        document.getElementById("product").value = order.product || "";
+        document.getElementById("quantity").value = order.quantity || "";
+        document.getElementById("factory").value = order.factory || ""; // Якщо factory є в order
+        document.getElementById("date").value = order.date || getTodayDate();
+        document.getElementById("comment").value = order.comment || "";
+    } else {
+        // Якщо об'єкт не передано, очищаємо форму
+        document.getElementById("product").value = "";
+        document.getElementById("quantity").value = "";
+        document.getElementById("factory").value = "";
+        document.getElementById("date").value = getTodayDate();
+        document.getElementById("comment").value = "";
+    }
+
+    // Відкриваємо модальне вікно
     document.getElementById("modalOverlay").style.display = "flex";
-    
-    // Показати всі опції в списках
+
+    // Показуємо всі опції в списках
     document.getElementById("productOptions").style.display = "block";
     document.getElementById("factoryOptions").style.display = "block";
 } // Очищає + показує форму
