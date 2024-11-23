@@ -92,7 +92,15 @@ function openModalRegister(index) {
         document.getElementById("product").value = order.product || "";
         document.getElementById("quantity").value = order.quantity || "";
         document.getElementById("factory").value = order.factory || ""; // Якщо factory є в order
-        document.getElementById("date").value = order.date || getTodayDate();
+        // Розбиваємо на частини
+        const [day, month , year] = order.date.split("/");
+
+        // Форматуємо у YYYY-MM-DD
+        const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+        console.log(order.date);
+        
+        
+        document.getElementById("date").value = formattedDate;
         document.getElementById("comment").value = order.comment || "";
     } else {
         // Якщо об'єкт не передано, очищаємо форму
@@ -174,6 +182,8 @@ function generateOrderNumber(_factoryName, date, product) {
     
     id++;
 
+    
+
     return _factoryName.slice(0, 3).toUpperCase() + date.split("-")[0].slice(-2) + extractThreeDigits(product) + id
 } ///
 
@@ -189,6 +199,7 @@ function getTodayDate() {
 
 function extractThreeDigits(productCode) {
     // Визначаємо, якого типу продукт
+    
 
     // Кейс 1: продукт має формат 0,14x918x925 G/C
     const case1 = productCode.match(/x(\d+)x/); // Знаходимо цифри між "x"
@@ -196,7 +207,8 @@ function extractThreeDigits(productCode) {
         return case1[1]
     }else{
         // Кейс 2 і 3: продукт має формат OT070-ELQ7013A9A або OT62-ELQ6216A2A
-        const case2 = productCode.match(/^OT(\d+)-/); // Знаходимо цифри після "OT"
+        const case2 = productCode.match(/^OT(\d+)/); // Знаходимо цифри після "OT"
+        
         if (case2) {
         const digits = case2[1];
         return digits.length === 3 ? digits : digits.padStart(3, '0'); // Додаємо нуль, якщо цифр 2
