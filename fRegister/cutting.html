@@ -1,0 +1,175 @@
+<html>
+
+<head>
+    <title>
+        Order Details
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/cutting.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img alt="TRIVIUM PACKAGING Logo" height="50"
+                src="https://storage.googleapis.com/a1aa/image/4zgxtme1a0wRWqzJWJfqKxelHZwjZQmTa2Z0wjo0EjPqP8pnA.jpg"
+                width="150" />
+            <div>
+                <h1>
+                    Замовлення № BIL248961719
+                </h1>
+                <p>
+                    Дата замовлення: 13.11.2024
+                </p>
+            </div>
+        </div>
+        <div class="details">
+            <div>
+                <label>
+                    Планувальник
+                </label>
+                <input id="planner" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Розрахункова кількість
+                </label>
+                <input id="estimated-quantity" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Назва рулону
+                </label>
+                <input id="roll-name" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Продукт
+                </label>
+                <input id="product" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Фактична кількість
+                </label>
+                <input id="actual-quantity" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Формат порізки (1C)
+                </label>
+                <input id="cutting-format-1c" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Код рулона (1C)
+                </label>
+                <input id="roll-code-1c" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Формат порізки
+                </label>
+                <input id="cutting-format" readonly="" type="text" />
+            </div>
+            <div>
+                <label>
+                    Код порізки (1C)
+                </label>
+                <input id="cutting-code-1c" readonly="" type="text" />
+            </div>
+        </div>
+        <div id="rolls-container">
+            <div class="roll-info">
+                <div class="roll-header">
+                    <div>
+                        № Рулона
+                    </div>
+                    <div>
+                        14289330303
+                    </div>
+                </div>
+                <div class="roll-details">
+                    <div>
+                        Кількість в пачці: 7 000
+                    </div>
+                    <div>
+                        Вага: 135
+                    </div>
+                    <div>
+                        К-сть повних пачок: 10
+                    </div>
+                    <div>
+                        Виробник: BestMadeMetals Inc.
+                    </div>
+                    <div>
+                        Кількість в останніх: 6 800
+                    </div>
+                    <div>
+                        Довжина: 200
+                    </div>
+                    <div>
+                        Твердість: 1800
+                    </div>
+                    <div>
+                        Оператор: Демков Іван Владиславович
+                    </div>
+                    <div>
+                        15.11.2024
+                    </div>
+                </div>
+            </div>
+            <div class="roll-info">
+                <div class="roll-header">
+                    <div>
+                        № Рулона
+                    </div>
+                    <div>
+                        14289330303
+                    </div>
+                </div>
+                <div class="roll-details">
+                    <div>
+                        Кількість в пачці: 7 000
+                    </div>
+                    <div>
+                        Вага: 135
+                    </div>
+                    <div>
+                        К-сть повних пачок: 10
+                    </div>
+                    <div>
+                        Виробник: BestMadeMetals Inc.
+                    </div>
+                    <div>
+                        Кількість в останніх: 6 800
+                    </div>
+                    <div>
+                        Довжина: 200
+                    </div>
+                    <div>
+                        Твердість: 1800
+                    </div>
+                    <div>
+                        Оператор: Демков Іван Владиславович
+                    </div>
+                    <div>
+                        15.11.2024
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-button">
+            <button onclick="addRollInfo()">
+                <i class="fas fa-plus">
+                </i>
+            </button>
+        </div>
+    </div>
+    <script src="js/cutting.js">
+        // Simulated database data
+
+    </script>
+</body>
+
+</html>
