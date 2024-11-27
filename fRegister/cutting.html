@@ -5,14 +5,18 @@
         Order Details
     </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/cutting.css">
+    <style>
+
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="header">
             <img alt="TRIVIUM PACKAGING Logo" height="50"
-                src="https://storage.googleapis.com/a1aa/image/4zgxtme1a0wRWqzJWJfqKxelHZwjZQmTa2Z0wjo0EjPqP8pnA.jpg"
+                src="img/logo.png"
                 width="150" />
             <div>
                 <h1>
@@ -54,6 +58,11 @@
                 </label>
                 <input id="actual-quantity" readonly="" type="text" />
             </div>
+        </div>
+        <div class="toggle-button" onclick="toggleMoreInfo()">
+            ...
+        </div>
+        <div class="more-info" id="more-info">
             <div>
                 <label>
                     Формат порізки (1C)
@@ -91,70 +100,71 @@
                 </div>
                 <div class="roll-details">
                     <div>
-                        Кількість в пачці: 7 000
+                        <label>
+                            Кількість в пачці
+                        </label>
+                        <input type="number" />
                     </div>
                     <div>
-                        Вага: 135
+                        <label>
+                            К-сть повних пачок
+                        </label>
+                        <input type="number" />
                     </div>
                     <div>
-                        К-сть повних пачок: 10
+                        <label>
+                            Кількість в останніх
+                        </label>
+                        <input type="number" />
                     </div>
                     <div>
-                        Виробник: BestMadeMetals Inc.
+                        <label>
+                            Вага
+                        </label>
+                        <input readonly="" type="text" value="135" />
+                    </div>
+                    
+                    <div>
+                        <label>
+                            Виробник
+                        </label>
+                        <input readonly="" type="text" value="BestMadeMetals Inc." />
+                    </div>
+                    
+                    <div>
+                        <label>
+                            Довжина
+                        </label>
+                        <input readonly="" type="text" value="200" />
                     </div>
                     <div>
-                        Кількість в останніх: 6 800
+                        <label>
+                            Твердість
+                        </label>
+                        <input readonly="" type="text" value="1800" />
+                    </div>
+                    
+                    <div>
+                        <label>
+                            Дата
+                        </label>
+                        <input readonly="" type="text" value="15.11.2024" />
                     </div>
                     <div>
-                        Довжина: 200
-                    </div>
-                    <div>
-                        Твердість: 1800
-                    </div>
-                    <div>
-                        Оператор: Демков Іван Владиславович
-                    </div>
-                    <div>
-                        15.11.2024
-                    </div>
-                </div>
-            </div>
-            <div class="roll-info">
-                <div class="roll-header">
-                    <div>
-                        № Рулона
-                    </div>
-                    <div>
-                        14289330303
-                    </div>
-                </div>
-                <div class="roll-details">
-                    <div>
-                        Кількість в пачці: 7 000
-                    </div>
-                    <div>
-                        Вага: 135
-                    </div>
-                    <div>
-                        К-сть повних пачок: 10
-                    </div>
-                    <div>
-                        Виробник: BestMadeMetals Inc.
-                    </div>
-                    <div>
-                        Кількість в останніх: 6 800
-                    </div>
-                    <div>
-                        Довжина: 200
-                    </div>
-                    <div>
-                        Твердість: 1800
-                    </div>
-                    <div>
-                        Оператор: Демков Іван Владиславович
-                    </div>
-                    <div>
-                        15.11.2024
+                        <label>
+                            Оператор
+                        </label>
+                        <select id="operator">
+                            <option value="Демков Іван Владиславович">
+                                Демков Іван Владиславович
+                            </option>
+                            <option value="Іванов Петро Петрович">
+                                Іванов Петро Петрович
+                            </option>
+                            <option value="Сидоров Олексій Олексійович">
+                                Сидоров Олексій Олексійович
+                            </option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -166,10 +176,7 @@
             </button>
         </div>
     </div>
-    <script src="js/cutting.js">
-        // Simulated database data
-
-    </script>
+    <script src="js/cutting.js"></script>
 </body>
 
 </html>
