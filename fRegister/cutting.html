@@ -88,87 +88,55 @@
                 <input id="cutting-code-1c" readonly="" type="text" />
             </div>
         </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="title">Створити пачку</div>
+                <div class="quantity-label">Кількість в пачці:</div>
+                <input type="number" class="quantity-input" value="1500">
+                <div class="date">15.11.2024</div>
+                <button class="close-button" onclick="closeModal()">Створити пачку</button>
+            </div>
+        </div>
         <div id="rolls-container">
-            <div class="roll-info">
-                <div class="roll-header">
-                    <div>
-                        № Рулона
-                    </div>
-                    <div>
-                        14289330303
-                    </div>
-                </div>
-                <div class="roll-details">
-                    <div>
-                        <label>
-                            Кількість в пачці
-                        </label>
-                        <input type="number" />
-                    </div>
-                    <div>
-                        <label>
-                            К-сть повних пачок
-                        </label>
-                        <input type="number" />
-                    </div>
-                    <div>
-                        <label>
-                            Кількість в останніх
-                        </label>
-                        <input type="number" />
-                    </div>
-                    <div>
-                        <label>
-                            Вага
-                        </label>
-                        <input readonly="" type="text" value="135" />
-                    </div>
-                    
-                    <div>
-                        <label>
-                            Виробник
-                        </label>
-                        <input readonly="" type="text" value="BestMadeMetals Inc." />
-                    </div>
-                    
-                    <div>
-                        <label>
-                            Довжина
-                        </label>
-                        <input readonly="" type="text" value="200" />
-                    </div>
-                    <div>
-                        <label>
-                            Твердість
-                        </label>
-                        <input readonly="" type="text" value="1800" />
-                    </div>
-                    
-                    <div>
-                        <label>
-                            Дата
-                        </label>
-                        <input readonly="" type="text" value="15.11.2024" />
-                    </div>
-                    <div>
-                        <label>
-                            Оператор
-                        </label>
-                        <select id="operator">
-                            <option value="Демков Іван Владиславович">
-                                Демков Іван Владиславович
-                            </option>
-                            <option value="Іванов Петро Петрович">
-                                Іванов Петро Петрович
-                            </option>
-                            <option value="Сидоров Олексій Олексійович">
-                                Сидоров Олексій Олексійович
-                            </option>
-                        </select>
+            <div class="roll-container">
+            <div class="roll-number">
+                <label class="roll-number label">№ Рулона</label>
+                <div class="roll-number dropdown active">
+                    <button class="dropbtn">Обрати рулон <i class="fa fa-caret-down"></i></button>
+                    <div class="roll dropdown-content">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
                     </div>
                 </div>
             </div>
+            <button class="create-button button-green" data-index="0" onclick="crteatePack(this)">Створити пачку</button>
+
+
+
+            
+
+
+
+            <div class="print-label dropdown active">
+                <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
+                <div class="print dropdown-content">
+                    <a href="#">Пачка 1</a>
+                    <a href="#">Пачка 2</a>
+                    <a href="#">Пачка 3</a>
+                    <a href="#">Пачка 4</a>
+                    <a href="#">Пачка 5</a>
+                    <a href="#">Пачка 6</a>
+                </div>
+            </div>
+            <button class="close-roll-button button-orange" onclick="closeRoll(this)">Закрити рулон</button>
+            <div class="info">
+                <div class="info-label">К-сть створених пачок</div>
+                <div class="pack-count"></div>
+            </div>
+            </div>
         </div>
+        
         <div class="add-button">
             <button onclick="addRollInfo()">
                 <i class="fas fa-plus">

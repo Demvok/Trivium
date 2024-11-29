@@ -16,6 +16,11 @@ const database = {
     ]
 };
 
+let rollIndex = 0;
+
+let packsCount = [0]
+
+
 // Function to populate the fields with data from the "database"
 function populateFields() {
     document.getElementById('planner').value = database.planner;
@@ -27,14 +32,15 @@ function populateFields() {
     document.getElementById('roll-code-1c').value = database.rollCode1C;
     document.getElementById('cutting-format').value = database.cuttingFormat;
     document.getElementById('cutting-code-1c').value = database.cuttingCode1C;
+    document.getElementsByClassName('pack-count')[0].innerText = packsCount[0]
 
-    const operatorSelect = document.getElementById('operator');
-    database.operators.forEach(operator => {
-        const option = document.createElement('option');
-        option.value = operator;
-        option.textContent = operator;
-        operatorSelect.appendChild(option);
-    });
+    // const operatorSelect = document.getElementById('operator');
+    // database.operators.forEach(operator => {
+    //     const option = document.createElement('option');
+    //     option.value = operator;
+    //     option.textContent = operator;
+    //     operatorSelect.appendChild(option);
+    // });
 }
 
 // Call the function to populate the fields when the page loads
@@ -98,6 +104,99 @@ function addRollInfo() {
             </div>
         </div>
     `;
+    rollIndex++;
+    packsCount.push(0)
+    const newRollInfoTemplate = `<div class="roll-container">
+            <div class="roll-number">
+                <label class="roll-number label">№ Рулона</label>
+                <div class="roll-number dropdown">
+                    <button class="dropbtn">Обрати рулон <i class="fa fa-caret-down"></i></button>
+                    <div class="roll dropdown-content">
+                        <a href="#">Option 1</a>
+                        <a href="#">Option 2</a>
+                        <a href="#">Option 3</a>
+                    </div>
+                </div>
+            </div>
+            <button class="create-button button-green" data-index="${rollIndex}" onclick="crteatePack(this)">Створити пачку</button>
+
+
+
+            
+
+
+
+            <div class="print-label dropdown">
+                <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
+                <div class="print dropdown-content">
+                    <a href="#">Пачка 1</a>
+                    <a href="#">Пачка 2</a>
+                    <a href="#">Пачка 3</a>
+                    <a href="#">Пачка 4</a>
+                    <a href="#">Пачка 5</a>
+                    <a href="#">Пачка 6</a>
+                </div>
+            </div>
+            <button class="close-roll-button button-orange" onclick="closeRoll(this)">Закрити рулон</button>
+            <div class="info">
+                <div class="info-label">К-сть створених пачок</div>
+                <div class="pack-count"></div>
+            </div>
+            </div>
+        `;
     const rollsContainer = document.getElementById('rolls-container');
-    rollsContainer.insertAdjacentHTML('beforeend', rollInfoTemplate);
+    rollsContainer.insertAdjacentHTML('beforeend', newRollInfoTemplate);
+}
+
+
+
+
+//________________________________________________________________________________________________________________________________
+
+
+
+
+        // document.getElementById('rollNumberBtn').addEventListener('click', function() {
+        //     alert('№ Рулона button clicked');
+        // });
+
+function crteatePack(btn){
+    console.log(btn);
+    
+    index = btn.getAttribute("data-index");
+    
+    packsCount[index]++;
+    document.getElementsByClassName('pack-count')[index].innerText = packsCount[index];
+    document.getElementById("myModal").style.display = "block";
+}
+
+
+
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+
+
+function closeRoll(element){
+    const block = element.closest('.roll-container'); // Знаходимо батьківський блок
+    const buttons = block.querySelectorAll('button');
+    const dropdowns = block.querySelectorAll('.dropdown');
+
+
+    buttons.forEach(btn => {
+        btn.disabled = true; // Робимо всі кнопки неактивними
+    });
+
+    dropdowns.forEach(dropdown =>{
+        console.log(dropdown);
+        
+
+        console.log(dropdown.classList);
+        
+        dropdown.classList.remove('active')
+
+
+    });
+    
 }
