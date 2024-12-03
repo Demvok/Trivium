@@ -1,0 +1,105 @@
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/lacquering.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="img/logo.png" alt="TRIVIUM PACKAGING logo" height="50" width="150">
+            <div class="order-info">
+                <div class="order-number">
+                    <h2 >Замовлення №:</h2>
+                    <input type="text", disabled id="order-number">
+                </div>
+                
+
+                <div class="order-date">
+                    <p >Дата замовлення:</p>
+                    <input type="text", disabled id="order-date">
+                </div>
+                
+            </div>
+        </div>
+        <div class="details">
+            <div class="responsible-person details-entry">
+                <h2 >Відповідальний:</h2>
+                <input type="text" disabled id="responsible-person">
+            </div>
+            
+
+            <div class="product details-entry">
+                <h2 >Продукт:</h2>
+                <input type="text" disabled id="product">
+            </div>
+            
+
+            <div class="specification-number details-entry">
+                <h2 >№ Специфікації:</h2>
+                <input type="text" disabled id="specification-number">
+            </div>
+
+
+            <div class="coating details-entry">
+                <h2 >Лакування:</h2>
+                <input type="text" disabled id="coating">
+            </div>
+                
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Пачка</th>
+                    <th>К-сть</th>
+                    <th>Дата створення</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody id="order-items">
+                <!-- Order items will be populated here -->
+            </tbody>
+        </table>
+
+
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="header">
+                    <h1>Пачка</h1>
+                    <h2 id="pack-number">345324201/1</h2>
+                </div>
+                <div class="tabs">
+                    <!-- Tabs will be dynamically created here -->
+                </div>
+                <div class="form-group">
+                    <label for="lac">Лак :</label>
+                    <input type="text" id="lac" value="PL1019-34" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="lac-used">Лаку використано (КГ):</label>
+                    <input type="number" id="lac-used" value="15">
+                </div>
+                <div class="form-group">
+                    <label for="solvent">Розчинник (КГ):</label>
+                    <input type="number" id="solvent" value="15">
+                </div>
+                <div class="form-group">
+                    <label for="status">Статус:</label>
+                    <select id="status">
+                        <option>В обробці</option>
+                        <option>Завершити</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button>Підтвердити</button>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    <script src="js/lacquering.js"></script>
+</body>
+</html>
