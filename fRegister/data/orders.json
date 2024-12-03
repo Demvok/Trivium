@@ -1,0 +1,28 @@
+{
+    "order_number": "BIL240701719",
+    "order_date": "13.11.2024",
+    "responsible_person": "Заграй Володимир Владиславович",
+    "product": "OT070-ELQ7013A11A",
+    "specification_number": "70-1 A",
+    "coating": "BPANI W/C 15V",
+    "items": [
+        {
+            "package_number": "345324201/1",
+            "quantity": 1500,
+            "creation_date": "01.02.2024",
+            "status": "Закрита"
+        },
+        {
+            "package_number": "345324201/2",
+            "quantity": 1500,
+            "creation_date": "01.02.2024",
+            "status": "Відкрита"
+        },
+        {
+            "package_number": "345324201/3",
+            "quantity": 1000,
+            "creation_date": "01.02.2024",
+            "status": "Відкрита"
+        }
+    ]
+}

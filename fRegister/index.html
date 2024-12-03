@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div name="center-block">
+    <!-- <div name="center-block">
 
         <div class="logo-container">
             <img src="img/logo.png" alt="Trivium Packaging">
@@ -25,8 +25,39 @@
             <button class="open-modal-btn" onclick="btnOpenDialog()">Відкрити реєстрацію замовлення</button>
         </div>
 
+    </div> -->
+    <div class="container">
+        <h1>Таблиця замовлень</h1>
+        <div class="top-nav">
+            <div class="search-bar">
+                <input type="text" id="order-search" placeholder="Введіть номер замовлення">
+                <button id="search-btn"><img src="img/search.svg" alt=""></button>
+            </div>
+            <button id="create-btn" onclick="btnOpenDialog(null)">Створити</button>
+        </div>
+        
+        <div class="table-wrapper">
+            <div class="table">
+                <div class="table-header">
+                    <div>Id Замовлення</div>
+                    <div>Продукт</div>
+                    <div>Завод</div>
+                    <div>Кількість</div>
+                    <div>Дата</div>
+                    <div>Статус</div>
+                    <div>Коментар</div>
+                    <div>Дія</div>
+                </div>
+                <div class="table-content" id="table-content">
+                    <!-- Рядки таблиці будуть динамічно створюватись за допомогою JS -->
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <button id="prev-btn" disabled>Попередня</button>
+            <button id="next-btn">Наступна</button>
+        </div>
     </div>
-
 <!-- Перше модальне вікно -->
 
 <div class="modal-overlay" id="modalOverlay">
@@ -38,9 +69,7 @@
             <div class="hor-block">
                 <label for="product">Вибрати продукт <span class="required">*</span></label>
                 <div class="custom-select select-product">
-                    <div class="dropdown">
-                        <input class="dropdown-input" type="text" id="product" placeholder="Введіть ключове значення" autocomplete="off">
-                    </div>
+                    <input type="text" id="product" onclick="filterProducts()" oninput="filterProducts()" placeholder="Введіть ключове значення" autocomplete="off">
                     <div class="options-list" id="productOptions"></div>
                 </div>
             </div>              
@@ -77,7 +106,7 @@
                 </div>                
                 
                 <div class="modal-nav-btns">
-                    <button class="close-btn" onclick="btnCloseModalRegister()">Закрити</button>
+                    <button class="close-btn cancel-btns" onclick="btnCloseModalRegister()">Закрити</button>
                     <button onclick="btnSubmitOrder()">Створити</button>                    
                 </div>
                 
@@ -127,7 +156,6 @@
             <label>Статус виконання:</label>
             <div class="custom-preview status-todo-select">
                 <select id="status">
-                    <option>В очікуванні</option>
                     <option>Виконується</option>
                     <option>Завершено</option>
                 </select>
@@ -157,7 +185,7 @@
         </div>
                 
         <div class="modal-nav-btns">
-            <button class="edit-btn" onclick="btnEditOrder()">Змінити</button>
+            <button class="edit-btn cancel-btns" onclick="btnEditOrder()">Змінити</button>
             <button onclick="btnCloseModalConfirm()">Підтвердити</button>
         </div>
     </div>
@@ -167,5 +195,7 @@
 
 
 <script src="js/script.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/document-script.js"></script>
 </body>
 </html>
