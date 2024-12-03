@@ -130,11 +130,7 @@ function addRollInfo() {
 
 
 
-<<<<<<< HEAD
-            <div class="print-label dropdown active">
-=======
             <div class="print-label dropdown">
->>>>>>> 3b015a009fe0ff1676244125a0772e7199b12b6d
                 <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
                 <div class="print dropdown-content">
                     <a href="#">Пачка 1</a>
