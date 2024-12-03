@@ -15,9 +15,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img alt="TRIVIUM PACKAGING Logo" height="50"
-                src="img/logo.png"
-                width="150" />
+            <img alt="TRIVIUM PACKAGING Logo" height="50" src="img/logo.png" width="150" />
             <div>
                 <h1>
                     Замовлення № BIL248961719
@@ -99,44 +97,45 @@
         </div>
         <div id="rolls-container">
             <div class="roll-container">
-            <div class="roll-number">
-                <label class="roll-number label">№ Рулона</label>
-                <div class="roll-number dropdown active">
-                    <button class="dropbtn">Обрати рулон <i class="fa fa-caret-down"></i></button>
-                    <div class="roll dropdown-content">
-                        <a href="#">Option 1</a>
-                        <a href="#">Option 2</a>
-                        <a href="#">Option 3</a>
+                <div class="roll-number">
+                    <label class="roll-number label">№ Рулона</label>
+                    <div class="roll-number dropdown active">
+                        <button class="dropbtn">Обрати рулон <i class="fa fa-caret-down"></i></button>
+                        <div class="roll dropdown-content">
+                            <a href="#">Option 1</a>
+                            <a href="#">Option 2</a>
+                            <a href="#">Option 3</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button class="create-button button-green" data-index="0" onclick="crteatePack(this)">Створити пачку</button>
+                <button class="create-button button-green" data-index="0" onclick="crteatePack(this)">Створити
+                    пачку</button>
 
 
 
-            
 
 
 
-            <div class="print-label dropdown active">
-                <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
-                <div class="print dropdown-content">
-                    <a href="#">Пачка 1</a>
-                    <a href="#">Пачка 2</a>
-                    <a href="#">Пачка 3</a>
-                    <a href="#">Пачка 4</a>
-                    <a href="#">Пачка 5</a>
-                    <a href="#">Пачка 6</a>
+
+                <div class="print-label dropdown active">
+                    <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
+                    <div class="print dropdown-content">
+                        <a href="#">Пачка 1</a>
+                        <a href="#">Пачка 2</a>
+                        <a href="#">Пачка 3</a>
+                        <a href="#">Пачка 4</a>
+                        <a href="#">Пачка 5</a>
+                        <a href="#">Пачка 6</a>
+                    </div>
+                </div>
+                <button class="close-roll-button button-orange" onclick="closeRoll(this)">Закрити рулон</button>
+                <div class="info">
+                    <div class="info-label">К-сть створених пачок</div>
+                    <div class="pack-count"></div>
                 </div>
             </div>
-            <button class="close-roll-button button-orange" onclick="closeRoll(this)">Закрити рулон</button>
-            <div class="info">
-                <div class="info-label">К-сть створених пачок</div>
-                <div class="pack-count"></div>
-            </div>
-            </div>
         </div>
-        
+
         <div class="add-button">
             <button onclick="addRollInfo()">
                 <i class="fas fa-plus">

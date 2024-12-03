@@ -164,15 +164,15 @@ function addRollInfo() {
 
 
 
-        // document.getElementById('rollNumberBtn').addEventListener('click', function() {
-        //     alert('№ Рулона button clicked');
-        // });
+// document.getElementById('rollNumberBtn').addEventListener('click', function() {
+//     alert('№ Рулона button clicked');
+// });
 
-function crteatePack(btn){
+function crteatePack(btn) {
     console.log(btn);
-    
+
     index = btn.getAttribute("data-index");
-    
+
     packsCount[index]++;
     document.getElementsByClassName('pack-count')[index].innerText = packsCount[index];
     document.getElementById("myModal").style.display = "block";
@@ -186,7 +186,7 @@ function closeModal() {
 
 
 
-function closeRoll(element){
+function closeRoll(element) {
     const block = element.closest('.roll-container'); // Знаходимо батьківський блок
     const buttons = block.querySelectorAll('button');
     const dropdowns = block.querySelectorAll('.dropdown');
@@ -196,15 +196,15 @@ function closeRoll(element){
         btn.disabled = true; // Робимо всі кнопки неактивними
     });
 
-    dropdowns.forEach(dropdown =>{
+    dropdowns.forEach(dropdown => {
         console.log(dropdown);
-        
+
 
         console.log(dropdown.classList);
-        
+
         dropdown.classList.remove('active')
 
 
     });
-    
+
 }

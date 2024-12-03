@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     width: 90%;
     margin: 20px auto;
@@ -18,22 +19,27 @@ body {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 
 /* Змінюємо стиль кнопок, які вимкнені */
-button:disabled { 
-    cursor: not-allowed;    /* Курсор у вигляді заборони */
-    color: #777;            /* Змінюємо колір тексту */
-    pointer-events: none;   /* Вимикаємо усі події миші */
-    box-shadow: none;       /* Забираємо будь-які ефекти */
+button:disabled {
+    cursor: not-allowed;
+    /* Курсор у вигляді заборони */
+    color: #777;
+    /* Змінюємо колір тексту */
+    pointer-events: none;
+    /* Вимикаємо усі події миші */
+    box-shadow: none;
+    /* Забираємо будь-які ефекти */
 }
-  
-  /* Вимикаємо ефект hover для вимкнених кнопок */
+
+/* Вимикаємо ефект hover для вимкнених кнопок */
 button:disabled:hover {
-    background-color: #ccc; /* Той самий колір, що і у вимкненому стані */
+    background-color: #ccc;
+    /* Той самий колір, що і у вимкненому стані */
     color: #777;
 }
 
@@ -48,35 +54,43 @@ button:disabled:hover {
     border-bottom: 2px solid #ccc;
     padding-bottom: 10px;
 }
+
 .header img {
     height: 50px;
 }
+
 .header div {
     text-align: right;
 }
+
 .header div h1 {
     margin: 0;
     font-size: 24px;
 }
+
 .header div p {
     margin: 0;
     font-size: 18px;
 }
+
 .details {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
+
 .details div {
     flex: 1;
     min-width: 200px;
     margin: 10px;
 }
+
 .details div label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
+
 .details div input {
     width: 100%;
     padding: 10px;
@@ -84,21 +98,25 @@ button:disabled:hover {
     border-radius: 5px;
     background-color: #f9f9f9;
 }
+
 .more-info {
     display: none;
     flex-wrap: wrap;
     margin-top: 20px;
 }
+
 .more-info div {
     flex: 1;
     min-width: 200px;
     margin: 10px;
 }
+
 .more-info div label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
+
 .more-info div input {
     width: 100%;
     padding: 10px;
@@ -106,11 +124,13 @@ button:disabled:hover {
     border-radius: 5px;
     background-color: #f9f9f9;
 }
+
 .toggle-button {
     cursor: pointer;
     font-size: 34px;
     text-align: center;
 }
+
 /* ------------------------------------------------------------------------------------------------------*/
 .roll-container {
     display: flex;
@@ -124,19 +144,19 @@ button:disabled:hover {
 }
 
 
-.roll-number{
+.roll-number {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
 
-.roll-number .dropbtn{
+.roll-number .dropbtn {
     font-size: 20;
 }
 
 
-.roll-number label{
+.roll-number label {
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #8acd70;
@@ -144,7 +164,7 @@ button:disabled:hover {
 }
 
 
-.roll-number .dropdown:hover .dropbtn{
+.roll-number .dropdown:hover .dropbtn {
     background-color: #adb53e;
     transition: all 0.4s;
 }
@@ -162,12 +182,12 @@ button:disabled:hover {
     overflow-y: scroll;
 }
 
-.dropdown-content *{
+.dropdown-content * {
     border-bottom: 1px solid rgb(172, 172, 172);
 }
 
 
-.create-button{
+.create-button {
     border: none;
     padding: 10px 25px;
     border-radius: 5px;
@@ -175,13 +195,13 @@ button:disabled:hover {
     cursor: pointer;
 }
 
-.create-button:hover{
+.create-button:hover {
     background-color: #6ab04e;
     transition: all 0.4s;
 }
 
 
-.print-label .dropbtn{
+.print-label .dropbtn {
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #d4edda;
@@ -189,15 +209,15 @@ button:disabled:hover {
 }
 
 
-.close-roll-button{
+.close-roll-button {
     border: none;
     font-size: 20;
     padding: 10px 20px;
     border-radius: 5px;
-    
+
 }
 
-.close-roll-button:hover{
+.close-roll-button:hover {
     background-color: #b0666d;
     transition: all 0.4s;
 }
@@ -211,7 +231,7 @@ button:disabled:hover {
 
 
 
-.info *{
+.info * {
     font-size: 18;
     text-align: center;
 }
@@ -232,6 +252,7 @@ button:disabled:hover {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
     background-color: white;
     margin: 15% auto;
@@ -243,15 +264,18 @@ button:disabled:hover {
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
 }
+
 .quantity-label {
     font-size: 18px;
     margin-bottom: 10px;
 }
+
 .quantity-input {
     display: inline-block;
     background-color: #f8b195;
@@ -263,11 +287,13 @@ button:disabled:hover {
     text-align: center;
     width: 100px;
 }
+
 .date {
     font-size: 14px;
     color: #888;
     margin: 20px 0;
 }
+
 .close-button {
     background-color: #a8e6cf;
     padding: 15px 30px;
@@ -293,6 +319,7 @@ button:disabled:hover {
     display: flex;
     align-items: center;
 }
+
 .button {
     padding: 10px 20px;
     margin: 0 5px;
@@ -301,17 +328,21 @@ button:disabled:hover {
     cursor: pointer;
     font-size: 14px;
 }
+
 .button-green {
     background-color: #d4edda;
 }
+
 .button-orange {
     background-color: #f8d7da;
     color: #721c24;
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
 }
+
 /* .dropdown-content {
     display: none;
     position: absolute;
@@ -326,17 +357,21 @@ button:disabled:hover {
     text-decoration: none;
     display: block;
 }
+
 .dropdown-content a:hover {
     background-color: #f1f1f1;
 }
+
 .dropdown.active:hover .dropdown-content {
     display: block;
 }
+
 .dropdown:hover .dropbtn {
     background-color: #6ab04e;
     transition: all 0.4s;
-    
+
 }
+
 .dropbtn {
     background-color: #ced570;
     padding: 10px 20px;
@@ -353,11 +388,13 @@ button:disabled:hover {
     font-size: 14px;
     color: #333;
 }
+
 .add-button {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
+
 .add-button button {
     background-color: #007bff;
     color: #fff;
