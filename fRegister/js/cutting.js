@@ -120,13 +120,8 @@ function addRollInfo() {
             </div>
             <button class="create-button button-green" data-index="${rollIndex}" onclick="crteatePack(this)">Створити пачку</button>
 
+            <div class="print-label dropdown active">
 
-
-            
-
-
-
-            <div class="print-label dropdown">
                 <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
                 <div class="print dropdown-content">
                     <a href="#">Пачка 1</a>
