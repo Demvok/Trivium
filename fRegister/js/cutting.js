@@ -110,7 +110,6 @@ function addRollInfo() {
             <div class="roll-number">
                 <label class="roll-number label">№ Рулона</label>
                 <div class="roll-number dropdown active">
-
                     <button class="dropbtn">Обрати рулон <i class="fa fa-caret-down"></i></button>
                     <div class="roll dropdown-content">
                         <a href="#">Option 1</a>

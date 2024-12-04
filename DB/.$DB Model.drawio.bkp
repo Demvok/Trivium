@@ -1,0 +1,34 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Сторінка-1" id="u5FYSQR3jmEpGPCtMNE-">
+    <mxGraphModel dx="683" dy="421" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WseHAHpJaHM3yeghM0L--1" value="Замовлення&#xa;- ‌id - унікальний індетифікатор( авто генерується)&#xa;- ‌продукт (тянеться з таблиці продуктів)&#xa;- ‌завод ( тянеться з таблиці заводів)&#xa;- ‌дата&#xa;- ‌статус (будуть провірятися пачки якщо всі закриті то статус завершено)&#xa;- ‌коментар&#xa;Заводи&#xa;- ‌id - 1, 2, 3, ...&#xa;- ‌назва повна &#xa;- ‌скорочений код&#xa;Продукти&#xa;- ‌id - 1, 2, 3, ...&#xa;- ‌назва&#xa;- ‌... (Може ще щось)&#xa;Пачки&#xa;- ‌id - генерується на основі номера рулону та порядкового номеру пачки&#xa;- ‌номер замовлення&#xa;- ‌статус&#xa;- ‌прогони&#xa;- ‌тип лакування&#xa;- ‌номер специфікаці&#xa;- ‌к-сть в пачкі&#xa;- ‌... Інші данні які підтягують але я забув&#xa;Прогони&#xa;- ‌id - (номер рулону/номер пачки/номер прогону)&#xa;- ‌к-сть лаку (кг)&#xa;- ‌к-сть розчиннику (кг)&#xa;- ‌статус&#xa;- ‌дата&#xa;- ‌... Інші дані які я забув що можуть бути корисні для прогону&#xa;Таблиця відповідностей типу Tech sheet (привязує продукти до типів рулону і тд)&#xa;Таблиця рулонів як в них" style="text;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="540" y="160" width="480" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="WseHAHpJaHM3yeghM0L--2" value="dimOrder" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="280" y="160" width="200" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="WseHAHpJaHM3yeghM0L--4" value="order_id (INT NOTNULL AUTO)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WseHAHpJaHM3yeghM0L--2">
+          <mxGeometry y="30" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WseHAHpJaHM3yeghM0L--5" value="fk_product_id (INT NOTNULL)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WseHAHpJaHM3yeghM0L--2">
+          <mxGeometry y="60" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WseHAHpJaHM3yeghM0L--6" value="fk_factory_id (INT NOTNULL)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WseHAHpJaHM3yeghM0L--2">
+          <mxGeometry y="90" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WseHAHpJaHM3yeghM0L--7" value="order_date (DATE NOTNULL)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WseHAHpJaHM3yeghM0L--2">
+          <mxGeometry y="120" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WseHAHpJaHM3yeghM0L--8" value="order_status (TINYINT NOTNULL)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WseHAHpJaHM3yeghM0L--2">
+          <mxGeometry y="150" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="WseHAHpJaHM3yeghM0L--9" value="order_status (TINYINT NOTNULL)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WseHAHpJaHM3yeghM0L--2">
+          <mxGeometry y="180" width="200" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
