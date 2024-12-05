@@ -109,11 +109,7 @@ function addRollInfo() {
     const newRollInfoTemplate = `<div class="roll-container">
             <div class="roll-number">
                 <label class="roll-number label">№ Рулона</label>
-<<<<<<< HEAD
                 <div class="roll-number dropdown active">
-=======
-                <div class="roll-number dropdown">
->>>>>>> 3b015a009fe0ff1676244125a0772e7199b12b6d
                     <button class="dropbtn">Обрати рулон <i class="fa fa-caret-down"></i></button>
                     <div class="roll dropdown-content">
                         <a href="#">Option 1</a>
@@ -124,13 +120,8 @@ function addRollInfo() {
             </div>
             <button class="create-button button-green" data-index="${rollIndex}" onclick="crteatePack(this)">Створити пачку</button>
 
+            <div class="print-label dropdown active">
 
-
-            
-
-
-
-            <div class="print-label dropdown">
                 <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
                 <div class="print dropdown-content">
                     <a href="#">Пачка 1</a>
