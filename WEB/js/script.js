@@ -1,9 +1,7 @@
 let factories = [];
 let id = 0;
-const CUTTING_PAGE = "http://127.0.0.1:5500/fRegister/cutting.html"
-const LACQUERING_PAGE = "http://127.0.0.1:5500/fRegister/lacquering.html"
-
-
+const CUTTING_PAGE = "http://127.0.0.1:5500/WEB/cutting.html"
+const LACQUERING_PAGE = "http://127.0.0.1:5500/WEB/lacquering.html"
 
 
 
@@ -58,7 +56,6 @@ function filterFactories() {
 
 
 function filterProducts() {
-
 
     const query = document.getElementById('product').value
     const options = productOptions.querySelectorAll(`div`);
@@ -120,11 +117,11 @@ function openModalRegister(index) {
 } // Очищає + показує форму
 
 
-
 function closeModalRegister() {
     document.getElementById("modalOverlay").style.display = "none";
     id--;
 } // Закриває форму
+
 
 function submitOrder() {
     const product = document.getElementById("product").value;
@@ -168,24 +165,12 @@ function autoResize() {
     ta.style.height = ta.scrollHeight >= 40 ? ta.scrollHeight + 'px' : "40px"; // Встановлює висоту відповідно до вмісту
 }
 
-
-
-
-
-
-
 //
 // Допоміжні функції
 
 function generateOrderNumber(_factoryName, date, product) {
-
     factoryCode = factories.find(item => item.name == _factoryName);
-
-    
     id++;
-
-    
-
     return _factoryName.slice(0, 3).toUpperCase() + date.split("-")[0].slice(-2) + extractThreeDigits(product) + id
 } ///
 
@@ -198,36 +183,31 @@ function getTodayDate() {
 }
 
 
-
 function extractThreeDigits(productCode) {
     // Визначаємо, якого типу продукт
     
-
     // Кейс 1: продукт має формат 0,14x918x925 G/C
     const case1 = productCode.match(/x(\d+)x/); // Знаходимо цифри між "x"
     if (case1 != null) {
         return case1[1]
-    }else{
+    }
+    else {
         // Кейс 2 і 3: продукт має формат OT070-ELQ7013A9A або OT62-ELQ6216A2A
         const case2 = productCode.match(/^OT(\d+)/); // Знаходимо цифри після "OT"
         
         if (case2) {
         const digits = case2[1];
         return digits.length === 3 ? digits : digits.padStart(3, '0'); // Додаємо нуль, якщо цифр 2
-    }
-    }
-
-    
+        }
+    }    
     return null; // Якщо формат не розпізнано
 }
 
 
 function parseDate(date) {
-
-    
+    if (date == null) return "";
     const [day, month , year] = date.split(".");
-    return new Date(year, month-1, day)
-        
+    return new Date(year, month-1, day)    
 }
 
 
@@ -237,14 +217,12 @@ function goToPageWithParams(button, page_url) {
     const parentRow = button.closest('.table-row')
     const orderId = parentRow.querySelector(".table-content-row > div:first-child").textContent.trim();
 
-
     if (orderId) {
-        
         console.log("Order ID:", orderId);
     } else {
         console.error("Не знайдено елемент table-row.");
     }
-
+    
     params = { "orderId" : orderId}
 
     Object.keys(params).forEach(key => {

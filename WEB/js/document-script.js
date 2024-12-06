@@ -1,15 +1,40 @@
 let orders;
-
 let filterOrdersList;
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    const pageSize = 10; // Кількість рядків на сторінку
+    let currentPage = 0; // Поточна сторінка
+
+    fetchData();
+
+    // Обробники для кнопок пагінації
+    prevBtn.addEventListener("click", () => {
+        if (currentPage > 0) {
+            currentPage--;
+            renderTable(filterOrdersList, currentPage);
+        }
+    });
+
+    nextBtn.addEventListener("click", () => {
+        if ((currentPage + 1) * pageSize < orders.length) {
+            currentPage++;
+            renderTable(filterOrdersList, currentPage);
+        }
+    });
+});
 
 async function fetchData() {
     try {
-        const response = await fetch('data/data.json'); // Замініть на шлях до вашого JSON-файлу
+        const response = await fetch('data/dimOrder.json'); // Замініть на шлях до вашого JSON-файлу
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         orders = await response.json();
-
+                
         // Перевірка структури даних
         if (!Array.isArray(orders) || !orders.every(order => typeof order.order_code !== 'undefined')) {
             throw new Error("Invalid data structure: Missing 'id_orders' in some objects");
@@ -21,10 +46,6 @@ async function fetchData() {
         console.error("Error fetching data:", error);
     }
 }
-
-
-
-
 
 
 document.addEventListener("click", function (event) {
@@ -40,19 +61,12 @@ document.addEventListener("click", function (event) {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", () => {
     CommentAutoResize()
     ProductListLoader()
     FactoryListLoader()
     fillMaterialTable()
 });
-
-
-
-
-///////// FIX ME
-
 
 function renderTable(data, page) {
     const sortedData = data.sort((a, b) => parseDate(b.order_date) - parseDate(a.order_date));
@@ -76,13 +90,15 @@ function renderTable(data, page) {
         const row_info = document.createElement("div");
         row_info.classList.add("table-content-row");
 
+        order_in_text = ["Відкрите", "Закрите"]
+
         row_info.innerHTML = `
             <div>${order.order_code}</div>
             <div>${order.product_name}</div>
-            <div>11111</div>
+            <div>${order.order_qt}</div>
             <div>${order.order_date}</div>
-            <div>${order.order_status}</div>
-            <div>${order.comments}</div>
+            <div>${order_in_text[order.order_status] || "Помилка статусу"}</div>
+            <div>${order.comments || ""}</div>
             <div class="edid-order-btn" onclick="openModalRegister(${index + start})">
                 <img src="img/Edit.svg" alt="Редагувати">
             </div>
@@ -96,47 +112,14 @@ function renderTable(data, page) {
         tableContent.appendChild(block);
     });
 
-    // Ввімкнення/вимкнення кнопок пагінації
+    // Ввімкнення/вимкнення кнопок навігації
     prevBtn.disabled = page === 0;
     nextBtn.disabled = end >= data.length;
 }
 
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    
-    const prevBtn = document.getElementById("prev-btn");
-    const nextBtn = document.getElementById("next-btn");
-
-    
-
-    const pageSize = 10; // Кількість рядків на сторінку
-    let currentPage = 0; // Поточна сторінка
-
-    fetchData();
-
-    // Обробники для кнопок пагінації
-    prevBtn.addEventListener("click", () => {
-        if (currentPage > 0) {
-            currentPage--;
-            renderTable(filterOrdersList, currentPage);
-        }
-    });
-
-    nextBtn.addEventListener("click", () => {
-        if ((currentPage + 1) * pageSize < orders.length) {
-            currentPage++;
-            renderTable(filterOrdersList, currentPage);
-        }
-    });
-});
-
-
-
-
+//
+// Блок пошуковика
+//
 
 function filteringOrders(value) {
     filterOrdersList = [];
@@ -154,12 +137,8 @@ function filteringOrders(value) {
 document.getElementById("search-btn").addEventListener("click", function () {
     const searchValue = document.getElementById("order-search").value.trim().toLowerCase();
 
-
-    
-
     // Всі рядки таблиці
     // const rows = document.querySelectorAll(".table-content-row");
-    
 
     filteringOrders(searchValue);
 

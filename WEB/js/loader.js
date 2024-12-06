@@ -1,8 +1,4 @@
-
-
 //Додавання списку продуктів ..................................................................................................
-
-
 
 
 function CommentAutoResize() {
@@ -17,8 +13,6 @@ function CommentAutoResize() {
         });
     }); // редагування розміру коментаря
 }
-
-
 
 
 function ProductListLoader() {
@@ -102,7 +96,6 @@ function FactoryListLoader() {
             });
         }); 
 }
-
 
 
 function fillMaterialTable() {
