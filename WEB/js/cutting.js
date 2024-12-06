@@ -31,7 +31,7 @@ const orderId = urlParams.get('orderId');
 
 async function getOrder1() {
     const orderId = new URLSearchParams(window.location.search).get('orderId'); // Отримуємо orderId з URL
-    const response = await fetch('data/data.json');
+    const response = await fetch('data/dimOrder.json');
     const data = await response.json();
     const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
 
@@ -123,7 +123,10 @@ function renderCoilDropDown(data) {
                 optionElement.href = '#';
                 optionElement.textContent = coil["number-coil"];
                 optionElement.addEventListener('click', () => {
-                    alert(`Обрано рулон: ${coil.number_coil}`);
+                    const button = dropdownContainers[index].closest('.roll-number').querySelector('button');
+                    button.innerText = coil["number-coil"];
+                    
+                    
                 });
         
                 dropdownContainers[index].appendChild(optionElement);
@@ -224,9 +227,6 @@ function addRollInfo() {
                 <div class="roll-number dropdown active">
                     <button class="dropbtn">Обрати рулон <i class="fa fa-caret-down"></i></button>
                     <div class="roll dropdown-content">
-                        <a href="#">Option 1</a>
-                        <a href="#">Option 2</a>
-                        <a href="#">Option 3</a>
                     </div>
                 </div>
             </div>

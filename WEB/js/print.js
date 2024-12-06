@@ -13,7 +13,7 @@ const parcel = urlParams.get('parcel');
 
 async function getOrder1() {
     const orderId = new URLSearchParams(window.location.search).get('orderId'); // Отримуємо orderId з URL
-    const response = await fetch('data/data.json');
+    const response = await fetch('data/dimOrder.json');
     const data = await response.json();
     const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
 

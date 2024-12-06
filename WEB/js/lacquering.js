@@ -9,7 +9,7 @@ let PRODUCT_DATA;
 
 async function getOrder1() {
     const orderId = new URLSearchParams(window.location.search).get('orderId'); // Отримуємо orderId з URL
-    const response = await fetch('data/data.json');
+    const response = await fetch('data/dimOrder.json');
     const data = await response.json();
     const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
 
@@ -54,9 +54,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     onStart();
     ORDER_DATA = await fetchOrderData();
     PRODUCT_DATA = await FetchPoductData(ORDER_DATA.product_name)
-    console.log(PRODUCT_DATA);
+
     
     const Parcels = await FetchParcelData(ORDER_DATA.order_code)
+
+    
     renderParcelTable(Parcels)
 });
 
@@ -144,8 +146,6 @@ function showModal(row) {
         PRODUCT_DATA.varnishing_3 != null,
         PRODUCT_DATA.varnishing_4 != null].reduce((acc, current) => acc + current, 0);
 
-    console.log(numOfTabs);
-    
 
     createTabs(numOfTabs);
 
@@ -165,7 +165,7 @@ function closeModal() {
 
 async function fetchOrderData() {
     const orderId = new URLSearchParams(window.location.search).get('orderId'); // Отримуємо orderId з URL
-    const response = await fetch('data/data.json');
+    const response = await fetch('data/dimOrder.json');
     const data = await response.json();
 
     const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
@@ -193,10 +193,10 @@ async function FetchPoductData(product) {
 
 async function FetchParcelData(orderID) {
     const response = await fetch('data/dimParcels.json')
-    const data = await response.json();
+    const data = await response.json();    
 
+    
     const parcelByOrder = data.filter(item => item.fk_order_id === orderID)
-
 
     if (parcelByOrder.length > 0) {
         return parcelByOrder;
@@ -208,12 +208,13 @@ async function FetchParcelData(orderID) {
 
 function renderParcelTable(data) {
 
-    console.log(data);
 
 
     const orderItemsContainer = document.getElementById('order-items');
 
     orderItemsContainer.innerHTML = "";
+
+
 
     data.forEach((parcel, index) => {
 
