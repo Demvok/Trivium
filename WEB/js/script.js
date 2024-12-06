@@ -129,18 +129,36 @@ function submitOrder() {
     const factory = document.getElementById("factory").value;
     const date = document.getElementById("date").value;
     const comment = document.getElementById("comment").value;
+    const order_code = generateOrderNumber(factory, date, product)
 
     if (!product || !quantity || !factory || !date) {
         alert("Будь ласка, заповніть всі обов'язкові поля.");
         return;
     }
 
-    document.getElementById("OrderId").textContent = generateOrderNumber(factory, date, product);
+    document.getElementById("OrderId").textContent = order_code;
     document.getElementById("dateConfirm").value = date;
     document.getElementById("productConfirm").value = product;
     document.getElementById("quantityConfirm").value = quantity;
     document.getElementById("factoryConfirm").value = factory;
     document.getElementById("commentConfirm").value = comment;
+
+    const neworder = {
+        "id": 1,
+        "order_code": order_code,
+        "product_name": product,
+        "factory_code": factory,
+        "order_qt": quantity,
+        "order_date": date,
+        "comments": comment,
+        "order_status": 0
+    }
+
+    console.log(neworder);
+    console.log(filterOrdersList[filterOrdersList.length - 1]);
+    
+    filterOrdersList.push(neworder)
+    renderTable(filterOrdersList, 0)
 
     closeModalRegister();
     openModalConfirm();
