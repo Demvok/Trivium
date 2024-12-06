@@ -1,0 +1,1062 @@
+[
+    {
+        "parcel_id": 1,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1733529600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 2,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1733529600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 3,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1733616000000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 4,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1733788800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 5,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 5,
+        "parcel_status": 0,
+        "parcel_created_date": 1733875200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 6,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 6,
+        "parcel_status": 0,
+        "parcel_created_date": 1733875200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 7,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 7,
+        "parcel_status": 0,
+        "parcel_created_date": 1733875200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 8,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 8,
+        "parcel_status": 0,
+        "parcel_created_date": 1733875200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 9,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 9,
+        "parcel_status": 0,
+        "parcel_created_date": 1733875200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 10,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 10,
+        "parcel_status": 0,
+        "parcel_created_date": 1733875200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 11,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 11,
+        "parcel_status": 0,
+        "parcel_created_date": 1733961600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 12,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 12,
+        "parcel_status": 0,
+        "parcel_created_date": 1733961600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 13,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 13,
+        "parcel_status": 0,
+        "parcel_created_date": 1733961600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 14,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 14,
+        "parcel_status": 0,
+        "parcel_created_date": 1733961600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 15,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 15,
+        "parcel_status": 0,
+        "parcel_created_date": 1734048000000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 16,
+        "fk_order_id": "BIL248211499",
+        "\u2116 in order": 16,
+        "parcel_status": 0,
+        "parcel_created_date": 1734307200000,
+        "qt_in_parcel": 1000.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 17,
+        "fk_order_id": "BIL249221114",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1733011200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 18,
+        "fk_order_id": "BIL249221114",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1733011200000,
+        "qt_in_parcel": 0.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 19,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1733011200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 20,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1733011200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 21,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1733184000000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 22,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1733184000000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 23,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 5,
+        "parcel_status": 0,
+        "parcel_created_date": 1733184000000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 24,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 6,
+        "parcel_status": 0,
+        "parcel_created_date": 1733184000000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 25,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 7,
+        "parcel_status": 0,
+        "parcel_created_date": 1733184000000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 26,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 8,
+        "parcel_status": 0,
+        "parcel_created_date": 1733184000000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 27,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 9,
+        "parcel_status": 0,
+        "parcel_created_date": 1733270400000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 28,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 10,
+        "parcel_status": 0,
+        "parcel_created_date": 1733356800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 29,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 11,
+        "parcel_status": 0,
+        "parcel_created_date": 1733356800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 30,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 12,
+        "parcel_status": 0,
+        "parcel_created_date": 1733356800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 31,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 13,
+        "parcel_status": 0,
+        "parcel_created_date": 1733356800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 32,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 14,
+        "parcel_status": 0,
+        "parcel_created_date": 1733356800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 33,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 15,
+        "parcel_status": 0,
+        "parcel_created_date": 1733356800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 34,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 16,
+        "parcel_status": 0,
+        "parcel_created_date": 1733443200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 35,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 17,
+        "parcel_status": 0,
+        "parcel_created_date": 1733529600000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 36,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 18,
+        "parcel_status": 0,
+        "parcel_created_date": 1733529600000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 37,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 19,
+        "parcel_status": 0,
+        "parcel_created_date": 1733529600000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 38,
+        "fk_order_id": "DEV240701113",
+        "\u2116 in order": 20,
+        "parcel_status": 0,
+        "parcel_created_date": 1733616000000,
+        "qt_in_parcel": 0.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 39,
+        "fk_order_id": "DEV240991679",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1731196800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 40,
+        "fk_order_id": "DEV240991679",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1731196800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 41,
+        "fk_order_id": "DEV240991679",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 42,
+        "fk_order_id": "DEV240991679",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 43,
+        "fk_order_id": "DEV240991679",
+        "\u2116 in order": 5,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 44,
+        "fk_order_id": "DEV240991679",
+        "\u2116 in order": 6,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 45,
+        "fk_order_id": "DEV240991679",
+        "\u2116 in order": 7,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1000.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 46,
+        "fk_order_id": "BIL240991678",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1731196800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 47,
+        "fk_order_id": "BIL240991678",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1731196800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 48,
+        "fk_order_id": "BIL240991678",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1731196800000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 49,
+        "fk_order_id": "BIL240991678",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1731196800000,
+        "qt_in_parcel": 400.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 50,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 51,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 52,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 53,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 54,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 5,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 55,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 6,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 56,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 7,
+        "parcel_status": 0,
+        "parcel_created_date": 1731369600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 57,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 8,
+        "parcel_status": 0,
+        "parcel_created_date": 1731628800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 58,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 9,
+        "parcel_status": 0,
+        "parcel_created_date": 1731628800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 59,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 10,
+        "parcel_status": 0,
+        "parcel_created_date": 1731628800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 60,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 11,
+        "parcel_status": 0,
+        "parcel_created_date": 1731715200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 61,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 12,
+        "parcel_status": 0,
+        "parcel_created_date": 1731801600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 62,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 13,
+        "parcel_status": 0,
+        "parcel_created_date": 1731974400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 63,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 14,
+        "parcel_status": 0,
+        "parcel_created_date": 1731974400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 64,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 15,
+        "parcel_status": 0,
+        "parcel_created_date": 1732060800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 65,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 16,
+        "parcel_status": 0,
+        "parcel_created_date": 1732060800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 66,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 17,
+        "parcel_status": 0,
+        "parcel_created_date": 1732060800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 67,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 18,
+        "parcel_status": 0,
+        "parcel_created_date": 1732060800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 68,
+        "fk_order_id": "BIL248211612",
+        "\u2116 in order": 19,
+        "parcel_status": 0,
+        "parcel_created_date": 1732320000000,
+        "qt_in_parcel": 200.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 69,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 70,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 71,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 72,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 73,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 5,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 74,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 6,
+        "parcel_status": 0,
+        "parcel_created_date": 1731456000000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 75,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 7,
+        "parcel_status": 0,
+        "parcel_created_date": 1731456000000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 76,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 8,
+        "parcel_status": 0,
+        "parcel_created_date": 1731542400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 77,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 9,
+        "parcel_status": 0,
+        "parcel_created_date": 1731628800000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 78,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 10,
+        "parcel_status": 0,
+        "parcel_created_date": 1731801600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 79,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 11,
+        "parcel_status": 0,
+        "parcel_created_date": 1731974400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 80,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 12,
+        "parcel_status": 0,
+        "parcel_created_date": 1732147200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 81,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 13,
+        "parcel_status": 0,
+        "parcel_created_date": 1732147200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 82,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 14,
+        "parcel_status": 0,
+        "parcel_created_date": 1732147200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 83,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 15,
+        "parcel_status": 0,
+        "parcel_created_date": 1732147200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 84,
+        "fk_order_id": "BUF240961611",
+        "\u2116 in order": 16,
+        "parcel_status": 0,
+        "parcel_created_date": 1732147200000,
+        "qt_in_parcel": 1000.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 85,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 86,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 87,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 88,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1731283200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 89,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 5,
+        "parcel_status": 0,
+        "parcel_created_date": 1731369600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 90,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 6,
+        "parcel_status": 0,
+        "parcel_created_date": 1731456000000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 91,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 7,
+        "parcel_status": 0,
+        "parcel_created_date": 1731542400000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 92,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 8,
+        "parcel_status": 0,
+        "parcel_created_date": 1731715200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 93,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 9,
+        "parcel_status": 0,
+        "parcel_created_date": 1731715200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 94,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 10,
+        "parcel_status": 0,
+        "parcel_created_date": 1731715200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 95,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 11,
+        "parcel_status": 0,
+        "parcel_created_date": 1731715200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 96,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 12,
+        "parcel_status": 0,
+        "parcel_created_date": 1731715200000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 97,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 13,
+        "parcel_status": 0,
+        "parcel_created_date": 1731801600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 98,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 14,
+        "parcel_status": 0,
+        "parcel_created_date": 1731801600000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 99,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 15,
+        "parcel_status": 0,
+        "parcel_created_date": 1731888000000,
+        "qt_in_parcel": 1600.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 100,
+        "fk_order_id": "BUF240961610",
+        "\u2116 in order": 16,
+        "parcel_status": 0,
+        "parcel_created_date": 1731888000000,
+        "qt_in_parcel": 1000.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 101,
+        "fk_order_id": "ZNO240991567",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1731024000000,
+        "qt_in_parcel": 1100.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 102,
+        "fk_order_id": "BIL240991568",
+        "\u2116 in order": 1,
+        "parcel_status": 0,
+        "parcel_created_date": 1731024000000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 103,
+        "fk_order_id": "BIL240991568",
+        "\u2116 in order": 2,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 104,
+        "fk_order_id": "BIL240991568",
+        "\u2116 in order": 3,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 105,
+        "fk_order_id": "BIL240991568",
+        "\u2116 in order": 4,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1500.0,
+        "coil_name": "",
+        "parcel_name": ""
+    },
+    {
+        "parcel_id": 106,
+        "fk_order_id": "BIL240991568",
+        "\u2116 in order": 5,
+        "parcel_status": 0,
+        "parcel_created_date": 1731110400000,
+        "qt_in_parcel": 1000.0,
+        "coil_name": "",
+        "parcel_name": ""
+    }
+]
