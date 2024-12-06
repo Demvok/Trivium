@@ -54,51 +54,57 @@ document.addEventListener("DOMContentLoaded", () => {
 ///////// FIX ME
 
 
-
-
 function renderTable(data, page) {
-        
-        const sortedData = data.sort((a, b) => parseDate(b.order_date) - parseDate(a.order_date));
+    const sortedData = data.sort((a, b) => parseDate(b.order_date) - parseDate(a.order_date));
 
-        const tableContent = document.getElementById("table-content");
-        const prevBtn = document.getElementById("prev-btn");
-        const nextBtn = document.getElementById("next-btn");
-        tableContent.innerHTML = "";
-    
+    const tableContent = document.getElementById("table-content");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    tableContent.innerHTML = "";
 
-        const pageSize = 10;
+    const pageSize = 10;
+
+    const start = page * pageSize;
+    const end = start + pageSize;
+
+    const pageData = sortedData.slice(start, end);
+
+    pageData.forEach((order, index) => {
+        const block = document.createElement("div");
+        block.classList.add("table-row");
+
+        const row_info = document.createElement("div");
+        row_info.classList.add("table-content-row");
+
+        row_info.innerHTML = `
+            <div>${order.order_code}</div>
+            <div>${order.product_name}</div>
+            <div>11111</div>
+            <div>${order.order_date}</div>
+            <div>${order.order_status}</div>
+            <div>${order.comments}</div>
+            <div class="edid-order-btn" onclick="openModalRegister(${index + start})">
+                <img src="img/Edit.svg" alt="Редагувати">
+            </div>
+            <div class="actions-column">
+                <button id="goToCutting" onclick="goToPageWithParams(this, CUTTING_PAGE)"><img src="img/Cut.svg" alt="Порізка"></button>
+                <button id="goToLaquering" onclick="goToPageWithParams(this, LACQUERING_PAGE)"><img src="img/paintbrush.svg" alt="Лакування"></button>
+            </div>
+        `;
+
+        block.appendChild(row_info);
+        tableContent.appendChild(block);
+    });
+
+    // Ввімкнення/вимкнення кнопок пагінації
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = end >= data.length;
+}
 
 
-        const start = page * pageSize;
-        const end = start + pageSize;
-        
-        const pageData = sortedData.slice(start, end);
-    
-        pageData.forEach((order, index) => {
-            const row = document.createElement("div");
-            row.classList.add("table-content-row");
-    
-            row.innerHTML = `
-                <div>${order.order_code}</div>
-                <div>${order.product_name}</div>
-                <div>${order.factory_code}</div>
-                <div>11111</div>
-                <div>${order.order_date}</div>
-                <div>${order.order_status}</div>
-                <div>${order.comments}</div>
-                <div class="edid-order-btn" onclick="openModalRegister(${index+start})"">
-                    <img src="img/Edit.svg"></img>
-                </div>
-            `;
-            
-            row.onclick = () => goToPageWithParams(baseURL, {orderId : order.order_code})
-            tableContent.appendChild(row);
-        });
-    
-        // Ввімкнення/вимкнення кнопок пагінації
-        prevBtn.disabled = page === 0;
-        nextBtn.disabled = end >= data.length;
-    }
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -136,7 +142,9 @@ function filteringOrders(value) {
     filterOrdersList = [];
     orders.forEach(order => {
         // Перевіряємо, чи існує order.id_orders, перш ніж викликати includes
-        if (order.id && order.id.toString().toLowerCase().includes(value)) {
+        console.log(order, value);
+        
+        if (order.order_code && order.order_code.toString().toLowerCase().includes(value)) {
             filterOrdersList.push(order);
         }
     });

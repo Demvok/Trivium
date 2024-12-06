@@ -1,6 +1,7 @@
 let factories = [];
 let id = 0;
-const baseURL = "http://127.0.0.1:5500/fRegister/lacquering.html";
+const CUTTING_PAGE = "http://127.0.0.1:5500/fRegister/cutting.html"
+const LACQUERING_PAGE = "http://127.0.0.1:5500/fRegister/lacquering.html"
 
 
 
@@ -231,23 +232,29 @@ function parseDate(date) {
 
 
 
+function goToPageWithParams(button, page_url) {
+    const url = new URL(page_url);
+    const parentRow = button.closest('.table-row')
+    const orderId = parentRow.querySelector(".table-content-row > div:first-child").textContent.trim();
 
 
+    if (orderId) {
+        
+        console.log("Order ID:", orderId);
+    } else {
+        console.error("Не знайдено елемент table-row.");
+    }
 
-function goToPageWithParams(baseURL, params) {
-    
-    const url = new URL(baseURL); // Створюємо об'єкт URL на основі базової адреси
+    params = { "orderId" : orderId}
 
-    // Додаємо параметри
     Object.keys(params).forEach(key => {
         url.searchParams.append(key, params[key]);
     });
 
-    // Переходимо на нову сторінку
-    location.assign(url); // Або використовуйте location.href = url;
+    location.assign(url);
+    
 }
 
-// Використання:
 
 
 

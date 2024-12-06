@@ -193,6 +193,7 @@ label {
 
 
 .table-content-row div {
+    font-size: 15px;
     overflow: hidden; /* Відсічення тексту, що не вміщується */
     text-overflow: ellipsis; /* Додавання "..." для довгих текстів */
     white-space: nowrap; /* Залишити текст в одному рядку */
@@ -214,6 +215,19 @@ label {
     height: 16px;
     cursor: pointer;
 }
+
+.actions-column{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.edid-order-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .table-header div, .table-content-row div {
     padding: 10px;
@@ -543,4 +557,11 @@ textarea #comment {
 /* ------------------------------------- Коментар ------------------------------------- */
 #commentConfirm {
     height: 40px;
+}
+
+
+@media (max-width: 1080px) {
+    .table-content-row div{
+        font-size: 12px;
+    }
 }
