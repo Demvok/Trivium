@@ -1,20 +1,120 @@
+let data_info = {
+    "planner": "",
+    "estimated-quantity": "",
+    "roll-name": "",
+    "product": "",
+    "actual-quantity": "",
+    "cutting-format-1c": "",
+    "roll-code-1c": "",
+    "cutting-format": "",
+    "cutting-code-1c": "",
+    "pack-count": "",
+}
+
+
+
 // Simulated database data
-const database = {
-    planner: "Заграй Володимир Владиславович",
-    estimatedQuantity: "14 500",
-    rollName: "C-896-----170TH550F2828-BAO",
-    product: "0,17×896×795 BAO BLANK",
-    actualQuantity: "14 500",
-    cuttingFormat1C: "0,17x896x795 2,8/2,8 TH550",
-    rollCode1C: "UA0006307",
-    cuttingFormat: "T-896-795-170TH550F2828-BAO BLANK",
-    cuttingCode1C: "UA0006943",
-    operators: [
-        "Демков Іван Владиславович",
-        "Іванов Петро Петрович",
-        "Сидоров Олексій Олексійович"
-    ]
-};
+
+const urlParams = new URLSearchParams(window.location.search);
+const orderId = urlParams.get('orderId');
+console.log(orderId); // виведе "BIL248961719"
+
+
+
+    
+
+// -----------------------------------------------------------------------------
+
+
+async function getOrder1() {
+    const orderId = new URLSearchParams(window.location.search).get('orderId'); // Отримуємо orderId з URL
+    const response = await fetch('data/data.json');
+    const data = await response.json();
+    const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
+
+    if (orderDetails) {
+        const product = orderDetails.product_name;
+        console.log(product);
+        
+        data_info.product = product;
+        document.getElementById("order_id").innerText = `Замовлення № ${orderId}`
+        document.getElementById("order_date").innerText = `Дата замовлння: ${orderDetails.order_date}`
+
+
+
+        await getFormat1(product);
+    } else {
+        console.error("Order not found");
+    }
+}
+
+
+async function getFormat1(product) {
+    const response = await fetch('data/technical_sheet.json');
+    const data = await response.json();
+    const productDetails = data.find(item => item.product_name === product);
+
+    if (productDetails) {
+        const coilCode = productDetails.ic_codes_for_coils;
+        console.log(productDetails["1c_code"]);
+        
+        data_info["cutting-code-1c"] = productDetails["1c_code"];
+        data_info["cutting-format"] = productDetails.cutting_format;
+        data_info["cutting-format-1c"] = productDetails.cutting_format_1c;
+        data_info["roll-name"]  = productDetails.coil;
+        data_info["roll-code-1c"] = productDetails["ic_codes_for_coils"];
+        await getCoil1(coilCode); // передаємо coil_code_2 для пошуку в data_coils.json
+    } else {
+        console.error("Product not found");
+    }
+}
+
+
+async function getCoil1(coilCode) {
+    
+    const response = await fetch('data/data_coils.json');
+    const data = await response.json();
+
+    const coilDetails = data.filter(item => item["1C"] === coilCode && item.status === "stock");
+
+    const dropdownContainer = document.getElementsByClassName('roll dropdown-content')[0];
+    
+    dropdownContainer.innerHTML = ''; // Очищаємо попередні варіанти перед додаванням нових
+
+    if (coilDetails.length > 0) {
+        
+        coilDetails.forEach(coil => {
+            
+            const optionElement = document.createElement('a');
+            optionElement.href = '#';
+            optionElement.textContent = coil["number-coil"];
+            optionElement.addEventListener('click', () => {
+                alert(`Обрано рулон: ${coil.number_coil}`);
+            });
+
+            dropdownContainer.appendChild(optionElement);
+        });
+    } else {
+        console.error("Coils not found");
+    }
+}
+
+async function onStart() {
+    await getOrder1();
+    populateFields();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    onStart()
+});
+
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------
 
 let rollIndex = 0;
 
@@ -23,28 +123,22 @@ let packsCount = [0]
 
 // Function to populate the fields with data from the "database"
 function populateFields() {
-    document.getElementById('planner').value = database.planner;
-    document.getElementById('estimated-quantity').value = database.estimatedQuantity;
-    document.getElementById('roll-name').value = database.rollName;
-    document.getElementById('product').value = database.product;
-    document.getElementById('actual-quantity').value = database.actualQuantity;
-    document.getElementById('cutting-format-1c').value = database.cuttingFormat1C;
-    document.getElementById('roll-code-1c').value = database.rollCode1C;
-    document.getElementById('cutting-format').value = database.cuttingFormat;
-    document.getElementById('cutting-code-1c').value = database.cuttingCode1C;
+    console.log(data_info);
+    
+    // document.getElementById('planner').value = database.planner;
+    // document.getElementById('estimated-quantity').value = database.estimatedQuantity;
+    document.getElementById('roll-name').value = data_info["roll-name"];
+    document.getElementById('product').value = data_info.product;
+    // document.getElementById('actual-quantity').value = database.actualQuantity;
+    document.getElementById('cutting-format-1c').value = data_info["cutting-format-1c"];
+    document.getElementById('roll-code-1c').value = data_info["roll-code-1c"];
+    document.getElementById('cutting-format').value = data_info["cutting-format"];
+    document.getElementById('cutting-code-1c').value = data_info["cutting-code-1c"];
     document.getElementsByClassName('pack-count')[0].innerText = packsCount[0]
 
-    // const operatorSelect = document.getElementById('operator');
-    // database.operators.forEach(operator => {
-    //     const option = document.createElement('option');
-    //     option.value = operator;
-    //     option.textContent = operator;
-    //     operatorSelect.appendChild(option);
-    // });
 }
 
 // Call the function to populate the fields when the page loads
-window.onload = populateFields;
 
 function toggleMoreInfo() {
     const moreInfo = document.getElementById('more-info');
@@ -56,54 +150,6 @@ function toggleMoreInfo() {
 }
 
 function addRollInfo() {
-    const rollInfoTemplate = `
-        <div class="roll-info">
-            <div class="roll-header">
-                <div>№ Рулона</div>
-                <div>14289330303</div>
-            </div>
-            <div class="roll-details">
-                <div>
-                    <label>Кількість в пачці</label>
-                    <input type="number" />
-                </div>
-                <div>
-                    <label>Вага</label>
-                    <input type="text" value="135" readonly />
-                </div>
-                <div>
-                    <label>К-сть повних пачок</label>
-                    <input type="number" />
-                </div>
-                <div>
-                    <label>Виробник</label>
-                    <input type="text" value="BestMadeMetals Inc." readonly />
-                </div>
-                <div>
-                    <label>Кількість в останніх</label>
-                    <input type="number" />
-                </div>
-                <div>
-                    <label>Довжина</label>
-                    <input type="text" value="200" readonly />
-                </div>
-                <div>
-                    <label>Твердість</label>
-                    <input type="text" value="1800" readonly />
-                </div>
-                <div>
-                    <label>Оператор</label>
-                    <select>
-                        ${database.operators.map(operator => `<option value="${operator}">${operator}</option>`).join('')}
-                    </select>
-                </div>
-                <div>
-                    <label>Дата</label>
-                    <input type="text" value="15.11.2024" readonly />
-                </div>
-            </div>
-        </div>
-    `;
     rollIndex++;
     packsCount.push(0)
     const newRollInfoTemplate = `<div class="roll-container">
@@ -149,14 +195,7 @@ function addRollInfo() {
 //________________________________________________________________________________________________________________________________
 
 
-
-
-// document.getElementById('rollNumberBtn').addEventListener('click', function() {
-//     alert('№ Рулона button clicked');
-// });
-
 function crteatePack(btn) {
-    console.log(btn);
 
     index = btn.getAttribute("data-index");
 
@@ -184,10 +223,6 @@ function closeRoll(element) {
     });
 
     dropdowns.forEach(dropdown => {
-        console.log(dropdown);
-
-
-        console.log(dropdown.classList);
 
         dropdown.classList.remove('active')
 

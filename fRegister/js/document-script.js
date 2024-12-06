@@ -1,28 +1,30 @@
-const orders = [
-    { 'id_orders': 'BUF21096106', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 1, 'date': "14/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 2, 'date': "17/2/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 3, 'date': "18/3/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 4, 'date': "27/4/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 5, 'date': "26/5/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 6, 'date': "25/6/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 7, 'date': "24/7/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 8, 'date': "23/8/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 9, 'date': "28/9/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096106', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 10, 'date': "27/10/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 11, 'date': "29/11/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 12, 'date': "2/12/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 13, 'date': "13/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 14, 'date': "14/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 15, 'date': "15/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 16, 'date': "16/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 17, 'date': "17/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 18, 'date': "18/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 19, 'date': "19/1/2020", 'status': "Виконується", 'comment': "0" },
-    { 'id_orders': 'BUF21096105', "product": "OT096 0,20 ALU/C", 'factory': "Bufallo", 'quantity': 20, 'date': "20/1/2020", 'status': "Виконується", 'comment': "0" },
+let orders;
 
-]
+let filterOrdersList;
 
-let filterOrdersList = Array.from(orders);
+async function fetchData() {
+    try {
+        const response = await fetch('data/data.json'); // Замініть на шлях до вашого JSON-файлу
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        orders = await response.json();
+
+        // Перевірка структури даних
+        if (!Array.isArray(orders) || !orders.every(order => typeof order.order_code !== 'undefined')) {
+            throw new Error("Invalid data structure: Missing 'id_orders' in some objects");
+        }
+
+        filterOrdersList = Array.from(orders);
+        renderTable(filterOrdersList, 0);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+
+
+
 
 
 document.addEventListener("click", function (event) {
@@ -55,6 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function renderTable(data, page) {
+        
+        const sortedData = data.sort((a, b) => parseDate(b.order_date) - parseDate(a.order_date));
+
         const tableContent = document.getElementById("table-content");
         const prevBtn = document.getElementById("prev-btn");
         const nextBtn = document.getElementById("next-btn");
@@ -66,26 +71,27 @@ function renderTable(data, page) {
 
         const start = page * pageSize;
         const end = start + pageSize;
-        const pageData = data.slice(start, end);
+        
+        const pageData = sortedData.slice(start, end);
     
         pageData.forEach((order, index) => {
             const row = document.createElement("div");
             row.classList.add("table-content-row");
     
             row.innerHTML = `
-                <div>${order.id_orders}</div>
-                <div>${order.product}</div>
-                <div>${order.factory}</div>
-                <div>${order.quantity}</div>
-                <div>${order.date}</div>
-                <div>${order.status}</div>
-                <div>${order.comment}</div>
+                <div>${order.order_code}</div>
+                <div>${order.product_name}</div>
+                <div>${order.factory_code}</div>
+                <div>11111</div>
+                <div>${order.order_date}</div>
+                <div>${order.order_status}</div>
+                <div>${order.comments}</div>
                 <div class="edid-order-btn" onclick="openModalRegister(${index+start})"">
                     <img src="img/Edit.svg"></img>
                 </div>
             `;
             
-    
+            row.onclick = () => goToPageWithParams(baseURL, {orderId : order.order_code})
             tableContent.appendChild(row);
         });
     
@@ -104,10 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageSize = 10; // Кількість рядків на сторінку
     let currentPage = 0; // Поточна сторінка
 
-    
-
-    // Показати першу сторінку
-    renderTable(filterOrdersList, currentPage);
+    fetchData();
 
     // Обробники для кнопок пагінації
     prevBtn.addEventListener("click", () => {
@@ -129,14 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-function filteringOrders(value){
-    filterOrdersList = []
+function filteringOrders(value) {
+    filterOrdersList = [];
     orders.forEach(order => {
-        if (order.id_orders.includes(value)) {
-            filterOrdersList.push(order)
-        } 
+        // Перевіряємо, чи існує order.id_orders, перш ніж викликати includes
+        if (order.id && order.id.toString().toLowerCase().includes(value)) {
+            filterOrdersList.push(order);
+        }
     });
-
 }
 
 // Додаємо обробник події для кнопки

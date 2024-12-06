@@ -1,6 +1,6 @@
 let factories = [];
 let id = 0;
-
+const baseURL = "http://127.0.0.1:5500/fRegister/lacquering.html";
 
 
 
@@ -89,19 +89,18 @@ function openModalRegister(index) {
 
 
     if (order) {
-        document.getElementById("product").value = order.product || "";
+        document.getElementById("product").value = order.product_name || "";
         document.getElementById("quantity").value = order.quantity || "";
-        document.getElementById("factory").value = order.factory || ""; // Якщо factory є в order
+        document.getElementById("factory").value = order.factory_code || ""; // Якщо factory є в order
         // Розбиваємо на частини
-        const [day, month , year] = order.date.split("/");
+        const [day, month , year] = order.order_date.split(".");
 
         // Форматуємо у YYYY-MM-DD
         const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-        console.log(order.date);
         
         
         document.getElementById("date").value = formattedDate;
-        document.getElementById("comment").value = order.comment || "";
+        document.getElementById("comment").value = order.comments || "";
     } else {
         // Якщо об'єкт не передано, очищаємо форму
         document.getElementById("product").value = "";
@@ -118,6 +117,8 @@ function openModalRegister(index) {
     document.getElementById("productOptions").style.display = "block";
     document.getElementById("factoryOptions").style.display = "block";
 } // Очищає + показує форму
+
+
 
 function closeModalRegister() {
     document.getElementById("modalOverlay").style.display = "none";
@@ -218,6 +219,35 @@ function extractThreeDigits(productCode) {
     
     return null; // Якщо формат не розпізнано
 }
+
+
+function parseDate(date) {
+
+    
+    const [day, month , year] = date.split(".");
+    return new Date(year, month-1, day)
+        
+}
+
+
+
+
+
+
+function goToPageWithParams(baseURL, params) {
+    
+    const url = new URL(baseURL); // Створюємо об'єкт URL на основі базової адреси
+
+    // Додаємо параметри
+    Object.keys(params).forEach(key => {
+        url.searchParams.append(key, params[key]);
+    });
+
+    // Переходимо на нову сторінку
+    location.assign(url); // Або використовуйте location.href = url;
+}
+
+// Використання:
 
 
 
