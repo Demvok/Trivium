@@ -1,6 +1,7 @@
 let ORDER_INFO;
 let PRODUCT_INFO;
 let COILS_INFO;
+let PARCEL_INFO;
 
 
 let data_info = {
@@ -16,12 +17,10 @@ let data_info = {
     "pack-count": "",
 }
 
-
-
-// Simulated database data
-
 const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get('orderId');
+
+
 
 
 
@@ -92,46 +91,93 @@ async function getCoil1(coilCode) {
     
 }
 
+
+async function getParcel(order_code) {
+    const response = await fetch('data/dimParcels.json');
+    const data = await response.json();
+
+    const parcelsDetails = data.filter(item => item.fk_order_id === order_code);
+
+    
+
+    if (parcelsDetails.length > 0) {
+        
+        return parcelsDetails;
+        
+    } else {
+        console.error("Coils not found");
+    }
+    
+}
+
+
 function renderCoilDropDown(data) {
     const dropdownContainers = document.getElementsByClassName('roll dropdown-content');
     for (let index = 0; index < dropdownContainers.length; index++) {
 
         dropdownContainers[index].innerHTML = '';
-
-        data.forEach(coil => {
+        try {
+            data.forEach(coil => {
             
-            const optionElement = document.createElement('a');
-            optionElement.href = '#';
-            optionElement.textContent = coil["number-coil"];
-            optionElement.addEventListener('click', () => {
-                alert(`Обрано рулон: ${coil.number_coil}`);
+                const optionElement = document.createElement('a');
+                optionElement.href = '#';
+                optionElement.textContent = coil["number-coil"];
+                optionElement.addEventListener('click', () => {
+                    alert(`Обрано рулон: ${coil.number_coil}`);
+                });
+        
+                dropdownContainers[index].appendChild(optionElement);
             });
-    
-            dropdownContainers[index].appendChild(optionElement);
-        });
+        } catch (error) {
+            console.log(error);
+            
+        }
+        
     } 
 }
 
+
+function renderParcelDropDown(data) {
+    const dropdownContainers = document.getElementsByClassName('print dropdown-content');
+    
+    for (let index = 0; index < dropdownContainers.length; index++) {
+
+        dropdownContainers[index].innerHTML = '';
+
+        try {
+            data.forEach(parcel => {
+            
+                const optionElement = document.createElement('a');
+                optionElement.href = `print.html?orderId=${orderId}&parcel=${parcel.parcel_id}`;
+                optionElement.textContent = parcel["\u2116 in order"];
+                
+                dropdownContainers[index].appendChild(optionElement);
+            });
+        } catch (error) {
+            console.log(console.error());
+            
+        }
+        
+    } 
+}
 
 
 async function fetcData() {
     ORDER_INFO = await getOrder1();
     PRODUCT_INFO = await getFormat1(ORDER_INFO.product_name);
-    COILS_INFO = await getCoil1(PRODUCT_INFO.ic_codes_for_coils)
-
-    
+    COILS_INFO = await getCoil1(PRODUCT_INFO.ic_codes_for_coils);
+    PARCEL_INFO = await getParcel(orderId);
+    console.log(PARCEL_INFO);
+  
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
     await fetcData();
     renderCoilDropDown(COILS_INFO);
+    renderParcelDropDown(PARCEL_INFO);
     populateFields();
     
 });
-
-
-
-
 
 
 
@@ -190,12 +236,6 @@ function addRollInfo() {
 
                 <button class="dropbtn">Надрукувати етикетку <i class="fa fa-caret-down"></i></button>
                 <div class="print dropdown-content">
-                    <a href="#">Пачка 1</a>
-                    <a href="#">Пачка 2</a>
-                    <a href="#">Пачка 3</a>
-                    <a href="#">Пачка 4</a>
-                    <a href="#">Пачка 5</a>
-                    <a href="#">Пачка 6</a>
                 </div>
             </div>
             <button class="close-roll-button button-orange" onclick="closeRoll(this)">Закрити рулон</button>
@@ -209,9 +249,8 @@ function addRollInfo() {
     rollsContainer.insertAdjacentHTML('beforeend', newRollInfoTemplate);
 
     renderCoilDropDown(COILS_INFO);
+    renderParcelDropDown(PARCEL_INFO);
 }
-
-
 
 
 //________________________________________________________________________________________________________________________________
@@ -222,6 +261,8 @@ function crteatePack(btn) {
     index = btn.getAttribute("data-index");
     
     const modal_window = document.getElementById("myModal");
+
+    document.getElementById("quantity-input").value = PRODUCT_INFO.qt_per_parcel
 
     packsCount[index]++;
     
