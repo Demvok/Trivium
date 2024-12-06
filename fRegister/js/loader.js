@@ -19,6 +19,8 @@ function CommentAutoResize() {
 }
 
 
+
+
 function ProductListLoader() {
     const productInput = document.getElementById('product');
     const productOptions = document.getElementById('productOptions');
