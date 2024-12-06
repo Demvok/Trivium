@@ -1,3 +1,8 @@
+let ORDER_INFO;
+let PRODUCT_INFO;
+let COILS_INFO;
+
+
 let data_info = {
     "planner": "",
     "estimated-quantity": "",
@@ -17,7 +22,6 @@ let data_info = {
 
 const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get('orderId');
-console.log(orderId); // виведе "BIL248961719"
 
 
 
@@ -33,16 +37,14 @@ async function getOrder1() {
     const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
 
     if (orderDetails) {
-        const product = orderDetails.product_name;
-        console.log(product);
-        
+        const product = orderDetails.product_name;        
         data_info.product = product;
         document.getElementById("order_id").innerText = `Замовлення № ${orderId}`
         document.getElementById("order_date").innerText = `Дата замовлння: ${orderDetails.order_date}`
 
 
 
-        await getFormat1(product);
+        return orderDetails;
     } else {
         console.error("Order not found");
     }
@@ -63,7 +65,7 @@ async function getFormat1(product) {
         data_info["cutting-format-1c"] = productDetails.cutting_format_1c;
         data_info["roll-name"]  = productDetails.coil;
         data_info["roll-code-1c"] = productDetails["ic_codes_for_coils"];
-        await getCoil1(coilCode); // передаємо coil_code_2 для пошуку в data_coils.json
+        return productDetails
     } else {
         console.error("Product not found");
     }
@@ -72,18 +74,31 @@ async function getFormat1(product) {
 
 async function getCoil1(coilCode) {
     
+    
     const response = await fetch('data/data_coils.json');
     const data = await response.json();
 
-    const coilDetails = data.filter(item => item["1C"] === coilCode && item.status === "stock");
+    const coilDetails = data.filter(item => item["1C"] === coilCode );
 
-    const dropdownContainer = document.getElementsByClassName('roll dropdown-content')[0];
     
-    dropdownContainer.innerHTML = ''; // Очищаємо попередні варіанти перед додаванням нових
 
     if (coilDetails.length > 0) {
         
-        coilDetails.forEach(coil => {
+        return coilDetails;
+        
+    } else {
+        console.error("Coils not found");
+    }
+    
+}
+
+function renderCoilDropDown(data) {
+    const dropdownContainers = document.getElementsByClassName('roll dropdown-content');
+    for (let index = 0; index < dropdownContainers.length; index++) {
+
+        dropdownContainers[index].innerHTML = '';
+
+        data.forEach(coil => {
             
             const optionElement = document.createElement('a');
             optionElement.href = '#';
@@ -91,21 +106,27 @@ async function getCoil1(coilCode) {
             optionElement.addEventListener('click', () => {
                 alert(`Обрано рулон: ${coil.number_coil}`);
             });
-
-            dropdownContainer.appendChild(optionElement);
+    
+            dropdownContainers[index].appendChild(optionElement);
         });
-    } else {
-        console.error("Coils not found");
-    }
+    } 
 }
 
-async function onStart() {
-    await getOrder1();
+
+
+async function fetcData() {
+    ORDER_INFO = await getOrder1();
+    PRODUCT_INFO = await getFormat1(ORDER_INFO.product_name);
+    COILS_INFO = await getCoil1(PRODUCT_INFO.ic_codes_for_coils)
+
+    
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetcData();
+    renderCoilDropDown(COILS_INFO);
     populateFields();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    onStart()
+    
 });
 
 
@@ -123,17 +144,16 @@ let packsCount = [0]
 
 // Function to populate the fields with data from the "database"
 function populateFields() {
-    console.log(data_info);
     
     // document.getElementById('planner').value = database.planner;
     // document.getElementById('estimated-quantity').value = database.estimatedQuantity;
-    document.getElementById('roll-name').value = data_info["roll-name"];
-    document.getElementById('product').value = data_info.product;
+    document.getElementById('roll-name').value =  PRODUCT_INFO.coil;
+    document.getElementById('product').value = ORDER_INFO.product_name;
     // document.getElementById('actual-quantity').value = database.actualQuantity;
-    document.getElementById('cutting-format-1c').value = data_info["cutting-format-1c"];
-    document.getElementById('roll-code-1c').value = data_info["roll-code-1c"];
-    document.getElementById('cutting-format').value = data_info["cutting-format"];
-    document.getElementById('cutting-code-1c').value = data_info["cutting-code-1c"];
+    document.getElementById('cutting-format-1c').value =  PRODUCT_INFO.cutting_format_1c;
+    document.getElementById('roll-code-1c').value = PRODUCT_INFO.ic_codes_for_coils;
+    document.getElementById('cutting-format').value = PRODUCT_INFO.cutting_format;
+    document.getElementById('cutting-code-1c').value = PRODUCT_INFO.cutting_code_1c;
     document.getElementsByClassName('pack-count')[0].innerText = packsCount[0]
 
 }
@@ -187,6 +207,8 @@ function addRollInfo() {
         `;
     const rollsContainer = document.getElementById('rolls-container');
     rollsContainer.insertAdjacentHTML('beforeend', newRollInfoTemplate);
+
+    renderCoilDropDown(COILS_INFO);
 }
 
 
@@ -198,16 +220,26 @@ function addRollInfo() {
 function crteatePack(btn) {
 
     index = btn.getAttribute("data-index");
+    
+    const modal_window = document.getElementById("myModal");
 
     packsCount[index]++;
-    document.getElementsByClassName('pack-count')[index].innerText = packsCount[index];
-    document.getElementById("myModal").style.display = "block";
+    
+    modal_window.style.display = "block";
+    modal_window.setAttribute("data-roll-index", index)
 }
 
 
 
 function closeModal() {
-    document.getElementById("myModal").style.display = "none";
+    const modal_window = document.getElementById("myModal");
+    index = modal_window.getAttribute("data-roll-index");
+
+
+    document.getElementsByClassName('pack-count')[index].innerText = packsCount[index];
+    
+    document.getElementsByClassName("roll-number dropdown")[index].classList.remove("active")
+    modal_window.style.display = "none";
 }
 
 
