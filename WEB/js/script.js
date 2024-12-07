@@ -1,7 +1,7 @@
 let factories = [];
 let id = 0;
-const CUTTING_PAGE = "http://127.0.0.1:5500/WEB/cutting.html"
-const LACQUERING_PAGE = "http://127.0.0.1:5500/WEB/lacquering.html"
+const CUTTING_PAGE = "https://trivium-packaging.netlify.app/web/cutting.html"
+const LACQUERING_PAGE = "https://trivium-packaging.netlify.app/web/lacquering.html"
 
 
 
