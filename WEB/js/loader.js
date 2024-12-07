@@ -34,7 +34,6 @@ function ProductListLoader() {
             // Додаємо кожен продукт у випадаючий список
             productList.forEach(productName => {
 
-
                 const option = document.createElement('div');
                 option.textContent = productName;
                 option.onclick = () => {                                                
