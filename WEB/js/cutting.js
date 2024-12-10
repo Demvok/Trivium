@@ -1,7 +1,7 @@
-let ORDER_INFO;
-let PRODUCT_INFO;
-let COILS_INFO;
-let PARCEL_INFO;
+// let ORDER_INFO;
+// let PRODUCT_INFO;
+// let COILS_INFO;
+// let PARCEL_INFO;
 
 
 let data_info = {
@@ -30,20 +30,13 @@ const orderId = urlParams.get('orderId');
 
 
 async function getOrder1() {
-    const orderId = new URLSearchParams(window.location.search).get('orderId'); // Отримуємо orderId з URL
-    const response = await fetch('data/dimOrder.json');
-    const data = await response.json();
-    const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
-
-    if (orderDetails) {
-        const product = orderDetails.product_name;        
+    await fetchOrder(orderId);
+    
+    if (ORDER_INFO) {
+        const product = ORDER_INFO.product_name;        
         data_info.product = product;
         document.getElementById("order_id").innerText = `Замовлення № ${orderId}`
-        document.getElementById("order_date").innerText = `Дата замовлння: ${orderDetails.order_date}`
-
-
-
-        return orderDetails;
+        document.getElementById("order_date").innerText = `Дата замовлння: ${ORDER_INFO.order_date}`
     } else {
         console.error("Order not found");
     }
@@ -51,20 +44,22 @@ async function getOrder1() {
 
 
 async function getFormat1(product) {
-    const response = await fetch('data/technical_sheet.json');
-    const data = await response.json();
-    const productDetails = data.find(item => item.product_name === product);
+    
+    await fetchProduct(product);
+    
 
-    if (productDetails) {
-        const coilCode = productDetails.ic_codes_for_coils;
-        console.log(productDetails["1c_code"]);
+
+    if (PRODUCT_INFO) {
+        const coilCode = PRODUCT_INFO.ic_codes_for_coils;
         
-        data_info["cutting-code-1c"] = productDetails["1c_code"];
-        data_info["cutting-format"] = productDetails.cutting_format;
-        data_info["cutting-format-1c"] = productDetails.cutting_format_1c;
-        data_info["roll-name"]  = productDetails.coil;
-        data_info["roll-code-1c"] = productDetails["ic_codes_for_coils"];
-        return productDetails
+        
+        data_info["cutting-code-1c"] = PRODUCT_INFO["1c_code"];
+        
+        data_info["cutting-format"] = PRODUCT_INFO.cutting_format;
+        data_info["cutting-format-1c"] = PRODUCT_INFO.cutting_format_1c;
+        data_info["roll-name"]  = PRODUCT_INFO.coil;
+        data_info["roll-code-1c"] = PRODUCT_INFO["ic_codes_for_coils"];
+        return coilCode
     } else {
         console.error("Product not found");
     }
@@ -73,17 +68,12 @@ async function getFormat1(product) {
 
 async function getCoil1(coilCode) {
     
-    
-    const response = await fetch('data/data_coils.json');
-    const data = await response.json();
-
-    const coilDetails = data.filter(item => item["1C"] === coilCode );
+    await fetchCoils(coilCode);
 
     
 
-    if (coilDetails.length > 0) {
+    if (COILS_INFO.length > 0) {
         
-        return coilDetails;
         
     } else {
         console.error("Coils not found");
@@ -93,20 +83,8 @@ async function getCoil1(coilCode) {
 
 
 async function getParcel(order_code) {
-    const response = await fetch('data/dimParcels.json');
-    const data = await response.json();
-
-    const parcelsDetails = data.filter(item => item.fk_order_id === order_code);
-
+    await fetchParcels(order_code);
     
-
-    if (parcelsDetails.length > 0) {
-        
-        return parcelsDetails;
-        
-    } else {
-        console.error("Coils not found");
-    }
     
 }
 
@@ -151,8 +129,8 @@ function renderParcelDropDown(data) {
             data.forEach(parcel => {
             
                 const optionElement = document.createElement('a');
-                optionElement.href = `print.html?orderId=${orderId}&parcel=${parcel.parcel_id}`;
-                optionElement.textContent = parcel["\u2116 in order"];
+                optionElement.href = `print.html?orderId=${orderId}&parcel=${parcel.parcel_name}`;
+                optionElement.textContent = parcel.parcel_name;
                 
                 dropdownContainers[index].appendChild(optionElement);
             });
@@ -166,11 +144,13 @@ function renderParcelDropDown(data) {
 
 
 async function fetcData() {
-    ORDER_INFO = await getOrder1();
-    PRODUCT_INFO = await getFormat1(ORDER_INFO.product_name);
-    COILS_INFO = await getCoil1(PRODUCT_INFO.ic_codes_for_coils);
-    PARCEL_INFO = await getParcel(orderId);
-    console.log(PARCEL_INFO);
+    await getOrder1(orderId);
+    
+    await getFormat1(ORDER_INFO.product_name);
+    
+    await getCoil1(PRODUCT_INFO.ic_codes_for_coils);
+
+    await getParcel(orderId);
   
 }
 
@@ -203,7 +183,13 @@ function populateFields() {
     document.getElementById('roll-code-1c').value = PRODUCT_INFO.ic_codes_for_coils;
     document.getElementById('cutting-format').value = PRODUCT_INFO.cutting_format;
     document.getElementById('cutting-code-1c').value = PRODUCT_INFO.cutting_code_1c;
-    document.getElementsByClassName('pack-count')[0].innerText = packsCount[0]
+    document.getElementById('estimated-quantity').value = ORDER_INFO.order_qt;
+    document.getElementById('actual-quantity').value = PARCEL_INFO.reduce((sum, parcel) => {
+        return sum + (parcel.qt_in_parcel || 0); // Add 0 if qt_in_parcel is null or undefined
+    }, 0);
+
+    // Затичка ака Костиль
+    document.getElementsByClassName('pack-count')[0].innerText = PARCEL_INFO.length;
 
 }
 
@@ -241,7 +227,7 @@ function addRollInfo() {
             <button class="close-roll-button button-orange" onclick="closeRoll(this)">Закрити рулон</button>
             <div class="info">
                 <div class="info-label">К-сть створених пачок</div>
-                <div class="pack-count"></div>
+                <div class="pack-count">${packsCount[packsCount.length - 1]}</div>
             </div>
             </div>
         `;
@@ -256,18 +242,39 @@ function addRollInfo() {
 //________________________________________________________________________________________________________________________________
 
 
-function crteatePack(btn) {
+async function crteatePack(btn) {
+
+    let newParcel = {};
 
     index = btn.getAttribute("data-index");
-    
-    const modal_window = document.getElementById("myModal");
 
-    document.getElementById("quantity-input").value = PRODUCT_INFO.qt_per_parcel
+    const coil_number = document.getElementsByClassName('dropbtn')[index].textContent
 
-    packsCount[index]++;
+    newParcel = {
+        "fk_order_id": ORDER_INFO.order_code,
+        "\u2116 in order": PARCEL_INFO.length + 1,
+        "parcel_status": 0,
+        "parcel_created_date": getTodayDate(),
+        "qt_in_parcel": null,
+        "coil_name": coil_number,
+        "parcel_name": `${coil_number}-${PARCEL_INFO.length + 1}`
+    }
+
+    saveToFile(newParcel);
+    await fetcData();
     
-    modal_window.style.display = "block";
-    modal_window.setAttribute("data-roll-index", index)
+    renderParcelDropDown(PARCEL_INFO);
+    
+    
+    
+    // const modal_window = document.getElementById("myModal");
+
+    document.getElementsByClassName("pack-count")[0].innerText = PARCEL_INFO.length
+
+    // packsCount[index]++;
+    
+    // modal_window.style.display = "block";
+    // modal_window.setAttribute("data-roll-index", index)
 }
 
 
@@ -302,4 +309,31 @@ function closeRoll(element) {
 
     });
 
+}
+
+
+
+function getTodayDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${day}.${month}.${year}`;
+}
+
+
+function saveToFile(data) {
+    fetch('/api/parcel', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Order added:', data);
+            // Refresh the order list or update the UI
+        })
+        .catch(error => console.error('Error adding order:', error));
 }

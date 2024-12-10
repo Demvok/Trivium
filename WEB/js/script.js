@@ -1,8 +1,13 @@
 let factories = [];
+<<<<<<< Updated upstream
 let id = 0;
 const CUTTING_PAGE = "http://127.0.0.1:5500/WEB/cutting.html"
 const LACQUERING_PAGE = "http://127.0.0.1:5500/WEB/lacquering.html"
 
+=======
+const CUTTING_PAGE = "http://localhost:8080/cutting.html"
+const LACQUERING_PAGE = "http://localhost:8080/lacquering.html"
+>>>>>>> Stashed changes
 
 
 function btnOpenDialog() {
@@ -81,24 +86,31 @@ function filterProducts() {
 //
 // Робота форми
 
-function openModalRegister(index) {
+async function openModalRegister(orderCode) {
     // Перевіряємо, чи передано об'єкт order
-    order = filterOrdersList[index]
+    
+    if (orderCode) {
+       await fetchOrder(orderCode);
+    }
+    
+    
+    
+    
 
 
-    if (order) {
-        document.getElementById("product").value = order.product_name || "";
-        document.getElementById("quantity").value = order.quantity || "";
-        document.getElementById("factory").value = order.factory_code || ""; // Якщо factory є в order
+    if (ORDER_INFO) {
+        document.getElementById("product").value = ORDER_INFO.product_name || "";
+        document.getElementById("quantity").value = ORDER_INFO.order_qt || "";
+        document.getElementById("factory").value = ORDER_INFO.factory_code || ""; // Якщо factory є в order
         // Розбиваємо на частини
-        const [day, month , year] = order.order_date.split(".");
+        const [day, month , year] = ORDER_INFO.order_date.split(".");
 
         // Форматуємо у YYYY-MM-DD
         const formattedDate = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
         
         
         document.getElementById("date").value = formattedDate;
-        document.getElementById("comment").value = order.comments || "";
+        document.getElementById("comment").value = ORDER_INFO.comments || "";
     } else {
         // Якщо об'єкт не передано, очищаємо форму
         document.getElementById("product").value = "";
@@ -111,30 +123,41 @@ function openModalRegister(index) {
     // Відкриваємо модальне вікно
     document.getElementById("modalOverlay").style.display = "flex";
 
-    // Показуємо всі опції в списках
-    document.getElementById("productOptions").style.display = "block";
-    document.getElementById("factoryOptions").style.display = "block";
 } // Очищає + показує форму
 
 
 function closeModalRegister() {
     document.getElementById("modalOverlay").style.display = "none";
-    id--;
+    ORDER_INFO = null;
 } // Закриває форму
 
 
 function submitOrder() {
+
+    let order_code;
+
+    
+
     const product = document.getElementById("product").value;
     const quantity = document.getElementById("quantity").value;
     const factory = document.getElementById("factory").value;
     const date = document.getElementById("date").value;
     const comment = document.getElementById("comment").value;
-    const order_code = generateOrderNumber(factory, date, product)
+    if (ORDER_INFO) {
+        order_code = ORDER_INFO.order_code;
+        
+    }else{
+        order_code = generateOrderNumber(factory, date, product)
+    }
+    
 
     if (!product || !quantity || !factory || !date) {
         alert("Будь ласка, заповніть всі обов'язкові поля.");
         return;
     }
+
+    console.log(order_code);
+    
 
     document.getElementById("OrderId").textContent = order_code;
     document.getElementById("dateConfirm").value = date;
@@ -143,22 +166,8 @@ function submitOrder() {
     document.getElementById("factoryConfirm").value = factory;
     document.getElementById("commentConfirm").value = comment;
 
-    const neworder = {
-        "id": 1,
-        "order_code": order_code,
-        "product_name": product,
-        "factory_code": factory,
-        "order_qt": quantity,
-        "order_date": date,
-        "comments": comment,
-        "order_status": 0
-    }
 
-    console.log(neworder);
-    console.log(filterOrdersList[filterOrdersList.length - 1]);
-    
-    filterOrdersList.push(neworder)
-    renderTable(filterOrdersList, 0)
+
 
     closeModalRegister();
     openModalConfirm();
@@ -170,6 +179,7 @@ function openModalConfirm() {
 }
 
 function closeModalConfirm() {
+    AddOrder();
     document.getElementById("modalOverlay2").style.display = "none";
 }
 
@@ -188,8 +198,7 @@ function autoResize() {
 
 function generateOrderNumber(_factoryName, date, product) {
     factoryCode = factories.find(item => item.name == _factoryName);
-    id++;
-    return _factoryName.slice(0, 3).toUpperCase() + date.split("-")[0].slice(-2) + extractThreeDigits(product) + id
+    return _factoryName.slice(0, 3).toUpperCase() + date.split("-")[0].slice(-2) + extractThreeDigits(product) + orders.length
 } ///
 
 function getTodayDate() {
@@ -249,6 +258,64 @@ function goToPageWithParams(button, page_url) {
 
     location.assign(url);
     
+}
+
+
+async function AddOrder() {
+    let order_data = {}
+
+
+    const order_code = document.getElementById("OrderId").innerText;
+    const order_date = document.getElementById("dateConfirm").value
+    const product_name = document.getElementById("productConfirm").value
+    const quantity = document.getElementById("quantityConfirm").value
+    const factory = document.getElementById("factoryConfirm").value
+    const status = document.getElementById("status").selectedIndex;
+    const comment = document.getElementById("commentConfirm").value
+
+
+    order_data = {
+        id : 1,
+        order_code : order_code,
+        order_date : toCorrectDateFormat(order_date),
+        product_name : product_name,
+        order_qt : quantity,
+        factory_code : factory,
+        comments : comment,
+        order_status : status
+    }
+
+
+    saveToFile(order_data);
+    await fetchData();
+    
+
+    
+}
+
+
+function toCorrectDateFormat(date){
+    const [year, month, day] = date.split('-');
+    
+    // Return the formatted date in DD.MM.YYYY format
+    return `${day}.${month}.${year}`;
+}
+
+
+function saveToFile(data) {
+    fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Order added:', data);
+            // Refresh the order list or update the UI
+        })
+        .catch(error => console.error('Error adding order:', error));
 }
 
 

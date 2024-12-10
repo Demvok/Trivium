@@ -1,4 +1,4 @@
-let orders;
+let ORDERS;
 let filterOrdersList;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -29,11 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchData() {
     try {
-        const response = await fetch('data/dimOrder.json'); // Замініть на шлях до вашого JSON-файлу
+        const response = await fetch('/api/orders'); // Замініть на шлях до вашого JSON-файлу
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         orders = await response.json();
+        
                 
         // Перевірка структури даних
         if (!Array.isArray(orders) || !orders.every(order => typeof order.order_code !== 'undefined')) {
@@ -62,6 +63,14 @@ document.addEventListener("click", function (event) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    fetch('/api/orders')
+    .then(response => response.json())
+    .then(data => {
+        // console.log('Orders:', data);
+        // Display the orders on the page
+    })
+    .catch(error => console.error('Error fetching orders:', error));
+    
     CommentAutoResize()
     ProductListLoader()
     FactoryListLoader()
@@ -99,7 +108,7 @@ function renderTable(data, page) {
             <div>${order.order_date}</div>
             <div>${order_in_text[order.order_status] || "Помилка статусу"}</div>
             <div>${order.comments || ""}</div>
-            <div class="edid-order-btn" onclick="openModalRegister(${index + start})">
+            <div class="edid-order-btn" onclick="openModalRegister('${order.order_code}')">
                 <img src="img/Edit.svg" alt="Редагувати">
             </div>
             <div class="actions-column">
@@ -145,3 +154,6 @@ document.getElementById("search-btn").addEventListener("click", function () {
     renderTable(filterOrdersList, 0)
     
 });
+
+
+

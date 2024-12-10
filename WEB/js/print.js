@@ -17,8 +17,7 @@ async function getOrder1() {
     const data = await response.json();
     const orderDetails = data.find(item => item.order_code === orderId); // Вибірка за orderId
 
-    if (orderDetails) {
-        const product = orderDetails.product_name;        
+    if (orderDetails) {       
 
         return orderDetails;
     } else {
@@ -67,7 +66,7 @@ async function getParcel(order_code) {
     const response = await fetch('data/dimParcels.json');
     const data = await response.json();
 
-    const parcelsDetails = data.find(item => item.fk_order_id === order_code && item.parcel_id == parcel);
+    const parcelsDetails = data.find(item => item.fk_order_id === order_code && item.parcel_name == parcel);
 
     
 
@@ -131,19 +130,19 @@ function populateFields() {
     document.getElementById('operator').value =  "admin";
     document.getElementById('coating-code').value = PRODUCT_INFO.varnishing_code_1c;
     document.getElementById('coating-format').value = PRODUCT_INFO.varnishing_type_1c;
-    document.getElementById('pack').value = PARCEL_INFO.coil_name - PARCEL_INFO["\u2116 in order"];
+    document.getElementById('pack').value = PARCEL_INFO.parcel_name;
 
     
     const sortedRuns = PARCEL_RUN_INFO.sort((a, b) => a.run_number - b.run_number);
     const row = document.querySelectorAll('tr')
-    for (let index = 0; index < sortedRuns.length; index++) {
+    for (let index = 0; index < 4; index++) {
 
         const runs = row[index+1].querySelectorAll('td')
-        const date = new Date(sortedRuns[index].run_date);
+        const date = new Date(PARCEL_INFO.parcel_created_date);
         const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
         runs[0].innerText = formattedDate
         runs[1].innerText = index+1
-        runs[2].innerText = sortedRuns[index].varnish_type
+        runs[2].innerText = PRODUCT_INFO[`varnishing_${index+1}`]
         runs[5].innerText = PRODUCT_INFO.qt_per_parcel
     }    
 

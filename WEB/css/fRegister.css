@@ -391,7 +391,7 @@ textarea {
     border: 1px solid #ccc;
     max-height: 120px;
     overflow-y: auto;
-    display: block;
+    display: none;
     z-index: 10;
 }
 
