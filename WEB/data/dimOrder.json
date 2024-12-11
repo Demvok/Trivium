@@ -26360,23 +26360,13 @@
     "order_status": 0
   },
   {
-    "id": 2637,
+    "id": 2636,
     "order_code": "VAJ240702636",
-    "order_date": "10.12.2024",
-    "product_name": "OT070-ELQ7013A9A",
-    "order_qt": "100000",
+    "order_date": "11.12.2024",
+    "product_name": "OT070-ELQ7022A6A",
+    "order_qt": "987654321",
     "factory_code": "Vajont",
-    "comments": "",
-    "order_status": 0
-  },
-  {
-    "id": 2638,
-    "order_code": "TES240702637",
-    "order_date": "10.12.2024",
-    "product_name": "OT070-ELQ7040A0A",
-    "order_qt": "123456789",
-    "factory_code": "Teslić",
-    "comments": "",
+    "comments": "VOVA KRASAYCHIK X2",
     "order_status": 0
   }
 ]

@@ -13,7 +13,9 @@ app.use(express.static(path.join(__dirname, 'WEB')));
 
 // Endpoint to serve the home page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'home.html'));
+    console.log(path.join(__dirname, 'WEB', 'home.html'));
+    
+    res.sendFile(path.join(__dirname, 'WEB',  'home.html'));
 });
 
 // Path to your JSON file
@@ -83,6 +85,40 @@ app.post('/api/orders', (req, res) => {
 
     res.status(201).json({ message: 'Order added successfully', order: newOrder });
 });
+
+app.put('/api/orders/:order_code', (req, res) => {
+    console.log(1);
+    
+    const order_code = req.params.order_code; // Отримуємо ID із параметра URL
+    const updatedOrder = req.body; // Нові дані для оновлення
+    const orders = readJsonFile(ordersJsonFilePath);
+    
+
+    // Знаходимо замовлення за ID
+    const order = orders.findIndex(order => order.order_code === order_code);
+    
+
+    
+    if (order == -1) {
+        
+        updatedOrder.id = orders.length > 0 ? orders[orders.length - 1].id + 1 : 1;
+        orders.push(updatedOrder);
+    }
+    else{
+        updatedOrder.id = order;
+        orders[order] = { ...orders[order], ...updatedOrder };
+    }
+
+    // Оновлюємо замовлення
+    
+
+
+    // Зберігаємо зміни в файл
+    writeJsonFile(orders, ordersJsonFilePath);
+
+    res.status(200).json({ message: 'Order updated successfully', order: order });
+});
+
 
 
 //---------------------------------------- Product
@@ -166,7 +202,42 @@ app.post('/api/parcel', (req, res) => {
 });
 
 
-// Start the server
-app.listen(8080, () => {
-    console.log('Server is listening on port 8080');
+app.put('/api/parcel/:parcel_name', (req, res) => {
+    console.log(1);
+    
+    const parcel_name = req.params.parcel_name; // Отримуємо ID із параметра URL
+    const updatedOrder = req.body; // Нові дані для оновлення
+    const parcels = readJsonFile(parcelJsonFilePath);
+    
+
+    // Знаходимо замовлення за ID
+    const parcel = parcels.findIndex(parcel => parcel.parcel_name === parcel_name);
+    
+
+    
+    if (!parcel) {
+        return res.status(404).json({ message: 'Order not found' });
+    }
+
+    // Оновлюємо замовлення
+    parcels[parcel] = { ...parcels[parcel], ...updatedOrder };
+
+
+    // Зберігаємо зміни в файл
+    writeJsonFile(parcels, parcelJsonFilePath);
+
+    res.status(200).json({ message: 'Order updated successfully', order: parcel });
 });
+
+
+
+// Start the server
+// app.listen(8080, () => {
+//     console.log('Server is listening on port 8080');
+
+//     console.log(path.join(__dirname, 'home.html'))
+// });
+
+app.listen(3000,'0.0.0.0', () => {
+    console.log(`Server running at http://0.0.0.1:8080`);
+  });

@@ -55,9 +55,20 @@ button:disabled:hover {
     padding-bottom: 10px;
 }
 
-.header img {
+/* .header img {
     height: 50px;
+} */
+
+
+.back-to-reality{
+    border: 0;
+    background-color: #8acd70;
+    color: #fff;
+    padding: 20px 10px;
+    border-radius: 5px;
+    text-decoration: none;
 }
+
 
 .header div {
     text-align: right;

@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     CommentAutoResize()
     ProductListLoader()
     FactoryListLoader()
-    fillMaterialTable()
 });
 
 function renderTable(data, page) {

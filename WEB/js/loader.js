@@ -97,52 +97,52 @@ function FactoryListLoader() {
 }
 
 
-function fillMaterialTable() {
-    fetch("data/materials.csv")
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.text();
-    })
-    .then(csvData => {
-        const rows = csvData.trim().split("\n");
-        const tableBody = document.getElementsByClassName("material-table-content")[0];
-        tableBody.innerHTML = ""; // Очистити старі дані
+// function fillMaterialTable() {
+//     fetch("data/materials.csv")
+//     .then(response => {
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+//         return response.text();
+//     })
+//     .then(csvData => {
+//         const rows = csvData.trim().split("\n");
+//         const tableBody = document.getElementsByClassName("material-table-content")[0];
+//         tableBody.innerHTML = ""; // Очистити старі дані
 
-        rows.forEach(row => {
-            const cols = row.split(",");
-            const raw = document.createElement("div");
-            raw.classList.add('material-table-content-row')
+//         rows.forEach(row => {
+//             const cols = row.split(",");
+//             const raw = document.createElement("div");
+//             raw.classList.add('material-table-content-row')
 
-            let material_name = document.createElement("div")
-            material_name.classList.add('material-name')
-            material_name.textContent = cols[0].trim();
-            raw.appendChild(material_name);
+//             let material_name = document.createElement("div")
+//             material_name.classList.add('material-name')
+//             material_name.textContent = cols[0].trim();
+//             raw.appendChild(material_name);
 
-            let material_needed = document.createElement("div")
-            material_needed.classList.add('material-needed')
-            material_needed.textContent = cols[1].trim();
-            if (parseInt(cols[1].trim()) > parseInt(cols[2].trim())) {
-                material_needed.classList.add('material-lacking')
-                const img = document.createElement("img")
-                img.src = "img\\error.svg"
-                img.alt = "Нестача"
-                img.title = "Даного матеріалу не вистачає на складі"
-                material_needed.appendChild(img)
-            }
+//             let material_needed = document.createElement("div")
+//             material_needed.classList.add('material-needed')
+//             material_needed.textContent = cols[1].trim();
+//             if (parseInt(cols[1].trim()) > parseInt(cols[2].trim())) {
+//                 material_needed.classList.add('material-lacking')
+//                 const img = document.createElement("img")
+//                 img.src = "img\\error.svg"
+//                 img.alt = "Нестача"
+//                 img.title = "Даного матеріалу не вистачає на складі"
+//                 material_needed.appendChild(img)
+//             }
             
-            raw.appendChild(material_needed);
+//             raw.appendChild(material_needed);
 
-            let material_amount = document.createElement("div")
-            material_name.classList.add('material-count')
-            material_amount.textContent = cols[2].trim();
-            raw.appendChild(material_amount);
+//             let material_amount = document.createElement("div")
+//             material_name.classList.add('material-count')
+//             material_amount.textContent = cols[2].trim();
+//             raw.appendChild(material_amount);
 
-            tableBody.appendChild(raw);
-        });
-    })
-    .catch(error => {
-        console.error("Помилка завантаження CSV:", error);
-    }); 
-}
+//             tableBody.appendChild(raw);
+//         });
+//     })
+//     .catch(error => {
+//         console.error("Помилка завантаження CSV:", error);
+//     }); 
+// }

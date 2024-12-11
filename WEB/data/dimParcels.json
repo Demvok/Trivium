@@ -1061,16 +1061,6 @@
   },
   {
     "fk_order_id": "DEN240702635",
-    "№ in order": 1,
-    "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": null,
-    "coil_name": "345508501",
-    "parcel_name": "345508501-1",
-    "parcel_id": 107
-  },
-  {
-    "fk_order_id": "DEN240702635",
     "№ in order": 2,
     "parcel_status": 0,
     "parcel_created_date": "10.12.2024",
@@ -1078,16 +1068,6 @@
     "coil_name": "345508501",
     "parcel_name": "345508501-2",
     "parcel_id": 108
-  },
-  {
-    "fk_order_id": "DEN240702635",
-    "№ in order": 3,
-    "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": null,
-    "coil_name": "345508501",
-    "parcel_name": "345508501-3",
-    "parcel_id": 109
   },
   {
     "fk_order_id": "DEN240702635",
@@ -1104,79 +1084,59 @@
     "№ in order": 5,
     "parcel_status": 0,
     "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": 100000,
+    "qt_in_parcel": "7000",
     "coil_name": "345581001",
     "parcel_name": "345581001-5",
     "parcel_id": 111
   },
   {
-    "fk_order_id": "DEN240702635",
-    "№ in order": 6,
+    "fk_order_id": "VAJ240702636",
+    "№ in order": 1,
     "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": null,
-    "coil_name": "Обрати рулон ",
-    "parcel_name": "Обрати рулон -6",
+    "parcel_created_date": "11.12.2024",
+    "qt_in_parcel": "5000",
+    "coil_name": "345508501",
+    "parcel_name": "345508501-1",
     "parcel_id": 112
   },
   {
-    "fk_order_id": "DEN240702635",
-    "№ in order": 7,
-    "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": null,
-    "coil_name": "Обрати рулон ",
-    "parcel_name": "Обрати рулон -7",
-    "parcel_id": 113
-  },
-  {
-    "fk_order_id": "DEN240702635",
-    "№ in order": 8,
-    "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": null,
-    "coil_name": "Обрати рулон ",
-    "parcel_name": "Обрати рулон -8",
-    "parcel_id": 114
-  },
-  {
-    "fk_order_id": "DEN240702635",
-    "№ in order": 9,
-    "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": null,
-    "coil_name": "Обрати рулон ",
-    "parcel_name": "Обрати рулон -9",
-    "parcel_id": 115
-  },
-  {
-    "fk_order_id": "TES240702637",
-    "№ in order": 1,
-    "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
-    "qt_in_parcel": null,
-    "coil_name": "345508501",
-    "parcel_name": "345508501-1",
-    "parcel_id": 116
-  },
-  {
-    "fk_order_id": "TES240702637",
+    "fk_order_id": "VAJ240702636",
     "№ in order": 2,
     "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
+    "parcel_created_date": "11.12.2024",
     "qt_in_parcel": null,
     "coil_name": "345508501",
     "parcel_name": "345508501-2",
-    "parcel_id": 117
+    "parcel_id": 113
   },
   {
     "fk_order_id": "VAJ240702636",
     "№ in order": 1,
     "parcel_status": 0,
-    "parcel_created_date": "10.12.2024",
+    "parcel_created_date": "11.12.2024",
+    "qt_in_parcel": "3000",
+    "coil_name": "346262702",
+    "parcel_name": "346262702-1",
+    "parcel_id": 114
+  },
+  {
+    "fk_order_id": "VAJ240702636",
+    "№ in order": 1,
+    "parcel_status": 0,
+    "parcel_created_date": "11.12.2024",
     "qt_in_parcel": null,
+    "coil_name": "345657501",
+    "parcel_name": "345657501-1",
+    "parcel_id": 115
+  },
+  {
+    "fk_order_id": "VAJ240702636",
+    "№ in order": 3,
+    "parcel_status": 0,
+    "parcel_created_date": "11.12.2024",
+    "qt_in_parcel": "728000",
     "coil_name": "345508501",
-    "parcel_name": "345508501-1",
-    "parcel_id": 118
+    "parcel_name": "345508501-3",
+    "parcel_id": 116
   }
 ]

@@ -76,7 +76,7 @@
   },
   {
       "product_id": 4,
-      "product_name": "OT070-ELQ7022A6A\u00a0",
+      "product_name": "OT070-ELQ7022A6A",
       "nomenclature_1c": "OT070-ELQ7022A6A-W14K05-993DE-170TH580S2828-HBI-90300",
       "end_product": "OT070-ELQ7022A6A\u00a0",
       "1c_code": "fff009846",
@@ -4326,7 +4326,7 @@
   },
   {
       "product_id": 174,
-      "product_name": "OT070-ELQ7022A6A\u00a0 TH550",
+      "product_name": "OT070-ELQ7022A6A TH550",
       "nomenclature_1c": "OT070-ELQ7022A6A-W14K05-993DE-170TH550F2828-HBI-90300",
       "end_product": "OT070-ELQ7022A6A\u00a0TH550",
       "1c_code": "UA0003457",
@@ -6951,7 +6951,7 @@
   },
   {
       "product_id": 279,
-      "product_name": "OT070-ELQ7022A6A\u00a0USK",
+      "product_name": "OT070-ELQ7022A6A USK",
       "nomenclature_1c": "OT070-ELQ7022A6A-W14K05-993DE-170TH580S5628-USK-90300",
       "end_product": "OT70-ELQ7022A6A ",
       "1c_code": "UA0005123",
@@ -7201,7 +7201,7 @@
   },
   {
       "product_id": 289,
-      "product_name": "OT070-ELQ7022A6A\u00a028\/28 USK ",
+      "product_name": "OT070-ELQ7022A6A\u00a028\/28 USK",
       "nomenclature_1c": "OT070-ELQ7022A6A-W14K05-993DE-170TH580S2828-USK-90300",
       "end_product": "OT70-ELQ7022A6A ",
       "1c_code": "UA0005547",

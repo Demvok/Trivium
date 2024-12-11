@@ -123,7 +123,7 @@ function populateFields() {
     document.getElementById('characteristics1').value = PRODUCT_INFO.cutting_format_1c;
     document.getElementById('characteristics2').value =  PRODUCT_INFO.for_barcode;
     document.getElementById('cutting-code-1c').value = PRODUCT_INFO.cutting_code_1c;
-    document.getElementById('leaf-nums').value = PRODUCT_INFO.qt_per_parcel;   
+    document.getElementById('leaf-nums').value = PARCEL_INFO.qt_in_parcel;   
     const date = new Date(PARCEL_INFO["parcel_created_date"]);
     const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     document.getElementById('date-cutting').value = formattedDate;

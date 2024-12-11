@@ -1,6 +1,7 @@
 let ORDER_INFO;
 let PRODUCT_INFO;
 let COILS_INFO;
+let PARCELS_INFO;
 let PARCEL_INFO;
 
 
@@ -35,5 +36,5 @@ async function fetchParcels(order_code) {
     const response = await fetch(`api/parcel/${order_code}`);
     const data = await response.json();
     
-    PARCEL_INFO = data;
+    PARCELS_INFO = data;
 }
